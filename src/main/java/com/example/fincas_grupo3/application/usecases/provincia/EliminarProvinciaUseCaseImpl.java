@@ -2,7 +2,9 @@ package com.example.fincas_grupo3.application.usecases.provincia;
 
 import com.example.fincas_grupo3.domain.ports.in.provincia.EliminarProvinciaUseCase;
 import com.example.fincas_grupo3.domain.ports.out.provincia.ProvinciaOutPort;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EliminarProvinciaUseCaseImpl implements EliminarProvinciaUseCase {
     private final ProvinciaOutPort provinciaOutPort;
 
