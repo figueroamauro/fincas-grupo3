@@ -19,16 +19,5 @@ public interface DireccionService {
 
     Boolean eliminarPorId(Long id);
 
-    public interface FincaService {
-        FincaResponseDTO guardar(FincaRequestDTO dto);
-
-        FincaResponseDTO actualizar(FincaRequestDTO dto);
-
-        List<FincaResponseDTO> obetenerTodas();
-
-        FincaResponseDTO obtenerPorId(Long id);
-
-        Boolean eliminarPorId(Long id);
-    }
 
 }
