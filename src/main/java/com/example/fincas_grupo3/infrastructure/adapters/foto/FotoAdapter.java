@@ -8,6 +8,7 @@ import com.example.fincas_grupo3.infrastructure.repositories.foto.JPAFotoReposit
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FotoAdapter implements FotoOutPort {
@@ -34,7 +35,11 @@ public class FotoAdapter implements FotoOutPort {
 
     @Override
     public Foto obtenerPorId(Long id) {
-        return fotoRepository.findById(id).map(fotoMapper::toModel).get();
+        Optional<FotoEntidad> fotoEncontrada = fotoRepository.findById(id);
+        if (fotoEncontrada.isPresent()) {
+            return fotoEncontrada.map(fotoMapper::toModel).get();
+        }
+        return null;
     }
 
     @Override
