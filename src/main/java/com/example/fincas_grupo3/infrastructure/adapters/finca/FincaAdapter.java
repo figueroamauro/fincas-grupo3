@@ -8,6 +8,7 @@ import com.example.fincas_grupo3.infrastructure.repositories.finca.JPAFincaRepos
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FincaAdapter implements FincaOutPort {
@@ -43,7 +44,11 @@ public class FincaAdapter implements FincaOutPort {
 
     @Override
     public Finca obtenerPorId(Long id) {
-        return fincaRepository.findById(id).map(fincaMapper::toModel).get();
+        Optional<FincaEntidad> fincaEncontrada = fincaRepository.findById(id);
+        if (fincaEncontrada.isPresent()) {
+            return fincaEncontrada.map(fincaMapper::toModel).get();
+        }
+        return null;
     }
 
     @Override
