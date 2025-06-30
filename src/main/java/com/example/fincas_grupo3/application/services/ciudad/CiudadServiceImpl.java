@@ -17,16 +17,18 @@ import java.util.stream.Collectors;
 public class CiudadServiceImpl implements CiudadService {
 
     private final CiudadUseCases ciudadUseCases;
+    private final CiudadMapper ciudadMapper;
 
-    public CiudadServiceImpl(CiudadUseCases ciudadUseCases) {
+    public CiudadServiceImpl(CiudadUseCases ciudadUseCases, CiudadMapper ciudadMapper) {
         this.ciudadUseCases = ciudadUseCases;
+        this.ciudadMapper = ciudadMapper;
     }
 
     @Override
     public CiudadResponseDTO crearCiudad(CiudadRequestDTO dto) {
-        Ciudad model = CiudadMapper.toModel(dto);
+        Ciudad model = ciudadMapper.toModel(dto);
         Ciudad ciudadGuardada = ciudadUseCases.crearCiudadUseCase(model);
-        return CiudadMapper.toDTO(ciudadGuardada);
+        return ciudadMapper.toDTO(ciudadGuardada);
     }
 
     @Override
@@ -40,14 +42,14 @@ public class CiudadServiceImpl implements CiudadService {
         ciudadEncontrada.setNombre(dto.getNombre());
 
         Ciudad ciudadActualizada = ciudadUseCases.actualizarCiudadUseCase(ciudadEncontrada);
-        return CiudadMapper.toDTO(ciudadActualizada);
+        return ciudadMapper.toDTO(ciudadActualizada);
     }
 
     @Override
     public List<CiudadResponseDTO> obtenerCiudades() {
         return ciudadUseCases.obtenerCiudades()
                 .stream()
-                .map(CiudadMapper::toDTO)
+                .map(ciudadMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
@@ -57,12 +59,12 @@ public class CiudadServiceImpl implements CiudadService {
         if (ciudad == null) {
             throw new CiudadNoEncontradaException("Ciudad no encontrada");
         }
-        return CiudadMapper.toDTO(ciudad);
+        return ciudadMapper.toDTO(ciudad);
     }
 
     @Override
     public Boolean eliminarCiudad(CiudadRequestDTO dto) {
-        Ciudad model = CiudadMapper.toModel(dto);
+        Ciudad model = ciudadMapper.toModel(dto);
         return ciudadUseCases.eliminarCiudad(model);
     }
 

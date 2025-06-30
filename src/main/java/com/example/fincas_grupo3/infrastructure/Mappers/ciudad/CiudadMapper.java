@@ -2,20 +2,12 @@ package com.example.fincas_grupo3.infrastructure.Mappers.ciudad;
 
 import com.example.fincas_grupo3.domain.models.ciudad.Ciudad;
 import com.example.fincas_grupo3.infrastructure.entities.ciudad.CiudadEntidad;
+import org.mapstruct.Mapper;
 
-public class CiudadMapper {
+@Mapper(componentModel = "spring", implementationName = "ciudadMapperInfra")
+public abstract class CiudadMapper {
 
-    public static CiudadEntidad toEntity(Ciudad ciudad) {
-        return new CiudadEntidad(
-                ciudad.getId(),
-                ciudad.getNombre()
-        );
-    }
+    public abstract CiudadEntidad toEntity(Ciudad ciudad);
 
-    public static Ciudad toModel(CiudadEntidad entidad) {
-        return new Ciudad(
-                entidad.getId(),
-                entidad.getNombre()
-        );
-    }
+    public abstract Ciudad toModel(CiudadEntidad ciudadEntidad);
 }

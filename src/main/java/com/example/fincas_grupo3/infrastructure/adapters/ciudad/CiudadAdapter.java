@@ -14,36 +14,38 @@ import java.util.Optional;
 public class CiudadAdapter implements CiudadOutPort {
 
     private final JPACiudadRepository jpaCiudadRepository;
+    private final CiudadMapper ciudadMapper;
 
-    public CiudadAdapter(JPACiudadRepository jpaCiudadRepository) {
+    public CiudadAdapter(JPACiudadRepository jpaCiudadRepository, CiudadMapper ciudadMapper) {
         this.jpaCiudadRepository = jpaCiudadRepository;
+        this.ciudadMapper = ciudadMapper;
     }
 
     @Override
     public Ciudad crearCiudad(Ciudad ciudad) {
-        CiudadEntidad entidad = CiudadMapper.toEntity(ciudad);
+        CiudadEntidad entidad = ciudadMapper.toEntity(ciudad);
         CiudadEntidad entidadGuardada = jpaCiudadRepository.save(entidad);
-        return CiudadMapper.toModel(entidadGuardada);
+        return ciudadMapper.toModel(entidadGuardada);
     }
 
     @Override
     public Ciudad actualizarCiudad(Ciudad ciudad) {
-        CiudadEntidad entidad = CiudadMapper.toEntity(ciudad);
+        CiudadEntidad entidad = ciudadMapper.toEntity(ciudad);
         CiudadEntidad entidadGuardada = jpaCiudadRepository.save(entidad);
-        return CiudadMapper.toModel(entidadGuardada);
+        return ciudadMapper.toModel(entidadGuardada);
     }
 
     @Override
     public List<Ciudad> obtenerCiudad() {
         return jpaCiudadRepository.findAll().stream()
-                .map(CiudadMapper::toModel)
+                .map(ciudadMapper::toModel)
                 .toList();
     }
 
     @Override
     public Ciudad obtenerCiudadPorId(Long id) {
         Optional<CiudadEntidad> ciudadGuardada = jpaCiudadRepository.findById(id);
-        return ciudadGuardada.map(CiudadMapper::toModel).orElse(null);
+        return ciudadGuardada.map(ciudadMapper::toModel).orElse(null);
     }
 
     @Override
