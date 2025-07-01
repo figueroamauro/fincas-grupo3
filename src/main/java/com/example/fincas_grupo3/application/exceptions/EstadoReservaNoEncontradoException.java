@@ -1,9 +1,5 @@
 package com.example.fincas_grupo3.application.exceptions;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
-@ResponseStatus(HttpStatus.NOT_FOUND)
 public class EstadoReservaNoEncontradoException extends RuntimeException {
     public EstadoReservaNoEncontradoException(String message) {
         super(message);

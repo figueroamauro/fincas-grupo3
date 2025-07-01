@@ -4,7 +4,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-
 class 	FincasGrupo3ApplicationTests {
 
 	public static void main(String[] args) {
