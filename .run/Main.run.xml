@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Main" type="Application" factoryName="Application">
+    <option name="ALTERNATIVE_JRE_PATH" value="ms-17" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <envs>
+      <env name="DB_PASS" value="ccgames1234" />
+      <env name="DB_URL" value="jdbc:sqlserver://localhost:1433;databaseName=fincas;encrypt=false" />
+      <env name="DB_USER" value="sa" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.example.fincas_grupo3.FincasGrupo3Application" />
+    <module name="fincas-grupo3" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
