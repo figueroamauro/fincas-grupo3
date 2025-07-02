@@ -1,6 +1,8 @@
 package com.example.fincas_grupo3.infrastructure.entities.usuario;
 
 
+
+import com.example.fincas_grupo3.infrastructure.entities.direccion.DireccionEntidad;
 import jakarta.persistence.*;
 
 @Entity
@@ -21,16 +23,21 @@ public class UsuarioEntidad  {
     @Column(name = "telefono",nullable = false)
     private String telefono;
 
+    @OneToOne
+    @JoinColumn(name = "direccion_id", referencedColumnName = "id", unique = true)
+    private DireccionEntidad direccion;
+
     public UsuarioEntidad() {
     }
 
-    public UsuarioEntidad(Long id, String nombre, String apellido, String correo, String contraseña, String telefono) {
+    public UsuarioEntidad(Long id, String nombre, String apellido, String correo, String contraseña, String telefono, DireccionEntidad direccion) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.contraseña = contraseña;
         this.telefono = telefono;
+        this.direccion = direccion;
     }
 
 
@@ -82,9 +89,11 @@ public class UsuarioEntidad  {
         this.telefono = telefono;
     }
 
+    public DireccionEntidad getDireccion() {
+        return direccion;
+    }
 
-
-
-
-
+    public void setDireccion(DireccionEntidad direccion) {
+        this.direccion = direccion;
+    }
 }

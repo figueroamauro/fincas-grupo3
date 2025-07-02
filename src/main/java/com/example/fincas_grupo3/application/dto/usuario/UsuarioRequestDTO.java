@@ -7,14 +7,16 @@ public class UsuarioRequestDTO {
     private String correo;
     private String contraseña;
     private String telefono;
+    private Long direccionId;
 
-    public UsuarioRequestDTO(Long id, String nombre, String apellido, String correo, String contraseña, String telefono) {
+    public UsuarioRequestDTO(Long id, String nombre, String apellido, String correo, String contraseña, String telefono, Long direccionId) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.contraseña = contraseña;
         this.telefono = telefono;
+        this.direccionId = direccionId;
     }
 
 
@@ -66,6 +68,12 @@ public class UsuarioRequestDTO {
         this.telefono = telefono;
     }
 
+    public Long getDireccionId() {
+        return direccionId;
+    }
 
+    public void setDireccionId(Long direccionId) {
+        this.direccionId = direccionId;
+    }
 }
 

@@ -1,15 +1,4 @@
--- CREAR LA BBDD SI NO EXISTE
-IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'Fincas')
-BEGIN
-    CREATE DATABASE Fincas;
-END;
 
-
-
-
-
--- FINCAS POR DEFAULT
-USE Fincas;
 
 
 
@@ -509,21 +498,6 @@ BEGIN
     REFERENCES fincas(id);
 END;
 
-
---DIRECCIONES -> CIUDADES
-IF NOT EXISTS (
-    SELECT * FROM sys.foreign_keys
-    WHERE NAME = 'fk_direcciones_ciudades'
-)
-BEGIN
-    ALTER TABLE direcciones
-    ADD ciudad_id bigint NOT NULL;
-
-	ALTER TABLE direcciones
-    ADD CONSTRAINT fk_direcciones_ciudades
-    FOREIGN KEY (ciudad_id)
-    REFERENCES ciudades(id);
-END;
 
 
 --CIUDADES -> PROVINCIAS

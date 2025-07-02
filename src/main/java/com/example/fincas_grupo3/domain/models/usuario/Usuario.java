@@ -1,5 +1,7 @@
 package com.example.fincas_grupo3.domain.models.usuario;
 
+import com.example.fincas_grupo3.domain.models.direccion.Direccion;
+
 public class Usuario {
     private Long id;
     private  String nombre;
@@ -7,14 +9,16 @@ public class Usuario {
     private String correo;
     private String contraseña;
     private String telefono;
+    private Direccion direccion;
 
-    public Usuario(Long id, String nombre, String apellido, String correo, String contraseña, String telefono) {
+    public Usuario(Long id, String nombre, String apellido, String correo, String contraseña, String telefono, Direccion direccion) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.contraseña = contraseña;
         this.telefono = telefono;
+        this.direccion = direccion;
     }
 
 
@@ -66,5 +70,11 @@ public class Usuario {
         this.telefono = telefono;
     }
 
+    public Direccion getDireccion() {
+        return direccion;
+    }
 
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
+    }
 }
