@@ -12,16 +12,15 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Mapper(componentModel = "spring", implementationName = "usuarioMapperInfra", uses = DireccionMapper.class)
+
+@Mapper(componentModel = "spring", implementationName = "usuarioMapperInfra")
 public abstract class UsuarioMapper {
 
     @Autowired
     protected JPADireccionRepository jpaDireccionRepository;
 
 
-
-
-    @Mapping(source = "direccion", target = "direccion", qualifiedByName = "mapDireccionIdToDireccionEntity")
+    @Mapping(source = "direccion.id", target = "direccion", qualifiedByName = "mapDireccionIdToDireccionEntity")
     public abstract UsuarioEntidad toEntity(Usuario usuario);
 
 
@@ -29,13 +28,11 @@ public abstract class UsuarioMapper {
     public abstract Usuario toModel(UsuarioEntidad entidad);
 
 
-    @Named("mapDireccionToDireccionEntity")
-    protected DireccionEntidad mapDireccionToDireccionEntity(Long direccionId) {
-
+    @Named("mapDireccionIdToDireccionEntity")
+    protected DireccionEntidad mapDireccionIdToDireccionEntity(Long direccionId) {
         if (direccionId == null) {
             return null;
         }
-
         return jpaDireccionRepository.findById(direccionId)
                 .orElseThrow(() -> new DireccionNoEncontradaException("La dirección con id " + direccionId + " asignada al usuario no fue encontrada."));
     }

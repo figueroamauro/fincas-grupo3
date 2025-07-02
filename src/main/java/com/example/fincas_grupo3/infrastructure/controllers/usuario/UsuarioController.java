@@ -49,7 +49,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> deleteById(Long id) {
+    public ResponseEntity<Boolean> deleteById(@PathVariable Long id) {
         Boolean response = usuarioService.eliminarUsuarioPorId(id);
         return ResponseEntity.noContent().build();
     }
