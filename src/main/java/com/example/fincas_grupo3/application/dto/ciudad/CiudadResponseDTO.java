@@ -1,11 +1,13 @@
 package com.example.fincas_grupo3.application.dto.ciudad;
 
-import com.example.fincas_grupo3.domain.models.provincia.Provincia;
+
+
 
 public class CiudadResponseDTO {
     private Long id;
     private String nombre;
     private String nombreProvincia;
+
 
     public CiudadResponseDTO(Long id, String nombre, String nombreProvincia) {
         this.id = id;

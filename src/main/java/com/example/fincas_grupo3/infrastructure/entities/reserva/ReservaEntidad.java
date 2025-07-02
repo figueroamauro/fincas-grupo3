@@ -1,5 +1,6 @@
 package com.example.fincas_grupo3.infrastructure.entities.reserva;
 
+import com.example.fincas_grupo3.infrastructure.entities.estadoreserva.EstadoReservaEntidad;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -20,15 +21,20 @@ public class ReservaEntidad {
     @Column(name = "precio_total")
     private Double precioTotal;
 
+    @ManyToOne
+    @JoinColumn(name = "estado_id", referencedColumnName = "id", nullable = false)
+    private EstadoReservaEntidad estadoReservaEntidad;
+
 
     public ReservaEntidad() {
     }
 
-    public ReservaEntidad(Long id, LocalDateTime fechaInicio, LocalDateTime fechaFin, Double precioTotal) {
+    public ReservaEntidad(Long id, LocalDateTime fechaInicio, LocalDateTime fechaFin, Double precioTotal, EstadoReservaEntidad estadoReservaEntidad) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.precioTotal = precioTotal;
+        this.estadoReservaEntidad = estadoReservaEntidad;
     }
 
 
@@ -62,5 +68,13 @@ public class ReservaEntidad {
 
     public void setPrecioTotal(Double precioTotal) {
         this.precioTotal = precioTotal;
+    }
+
+    public EstadoReservaEntidad getEstadoReservaEntidad() {
+        return estadoReservaEntidad;
+    }
+
+    public void setEstadoReservaEntidad(EstadoReservaEntidad estadoReservaEntidad) {
+        this.estadoReservaEntidad = estadoReservaEntidad;
     }
 }

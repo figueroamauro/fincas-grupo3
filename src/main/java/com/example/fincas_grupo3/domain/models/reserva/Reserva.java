@@ -1,5 +1,7 @@
 package com.example.fincas_grupo3.domain.models.reserva;
 
+import com.example.fincas_grupo3.domain.models.estadoreserva.EstadoReserva;
+
 import java.time.LocalDateTime;
 
 public class Reserva {
@@ -7,12 +9,14 @@ public class Reserva {
     private LocalDateTime fechaInicio;
     private LocalDateTime fechaFin;
     private Double precioTotal;
+    private EstadoReserva estadoReserva;
 
-    public Reserva(Long id, LocalDateTime fechaInicio, LocalDateTime fechaFin, Double precioTotal) {
+    public Reserva(Long id, LocalDateTime fechaInicio, LocalDateTime fechaFin, Double precioTotal, EstadoReserva estadoReserva) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.precioTotal = precioTotal;
+        this.estadoReserva = estadoReserva;
     }
 
     public Long getId() {
@@ -45,5 +49,13 @@ public class Reserva {
 
     public void setPrecioTotal(Double precioTotal) {
         this.precioTotal = precioTotal;
+    }
+
+    public EstadoReserva getEstadoReserva() {
+        return estadoReserva;
+    }
+
+    public void setEstadoReserva(EstadoReserva estadoReserva) {
+        this.estadoReserva = estadoReserva;
     }
 }

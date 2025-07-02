@@ -1,5 +1,6 @@
 package com.example.fincas_grupo3.application.dto.reserva;
 
+
 import java.time.LocalDateTime;
 
 public class ReservaResponseDTO {
@@ -7,13 +8,16 @@ public class ReservaResponseDTO {
     private LocalDateTime fechaInicio;
     private LocalDateTime fechaFin;
     private Double precioTotal;
+    private String nombreEstado;
 
 
-    public ReservaResponseDTO(Long id, LocalDateTime fechaInicio, LocalDateTime fechaFin, Double precioTotal) {
+
+    public ReservaResponseDTO(Long id, LocalDateTime fechaInicio, LocalDateTime fechaFin, Double precioTotal, String nombreEstado) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.precioTotal = precioTotal;
+        this.nombreEstado = nombreEstado;
     }
 
     public Long getId() {
@@ -46,5 +50,13 @@ public class ReservaResponseDTO {
 
     public void setPrecioTotal(Double precioTotal) {
         this.precioTotal = precioTotal;
+    }
+
+    public String getNombreEstado() {
+        return nombreEstado;
+    }
+
+    public void setNombreEstado(String nombreEstado) {
+        this.nombreEstado = nombreEstado;
     }
 }
