@@ -1,6 +1,7 @@
 package com.example.fincas_grupo3.application.services.rol;
 
 import com.example.fincas_grupo3.application.dto.rol.RolResponseDTO;
+import com.example.fincas_grupo3.application.exceptions.RolNoEncontradoException;
 import com.example.fincas_grupo3.application.mappers.rol.RolMapper;
 import com.example.fincas_grupo3.application.usecases.rol.RolUseCases;
 import com.example.fincas_grupo3.domain.models.rol.Rol;
@@ -21,7 +22,12 @@ public class RolServiceImpl implements RolService {
 
     @Override
     public RolResponseDTO obtenerPorId(Long id) {
+
         Rol rol = rolUseCases.obtenerRolPorId(id);
+        if (rol == null) {
+            throw new RolNoEncontradoException("Rol no encontrado");
+        }
+
         return rolMapper.toDTO(rol);
 
     }

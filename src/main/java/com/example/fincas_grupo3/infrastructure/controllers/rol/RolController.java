@@ -21,16 +21,19 @@ public class RolController {
         RolResponseDTO response = rolService.guardar(dto);
         return ResponseEntity.created(URI.create("/api/roles/"+ response.getNombre())).body(response);
     }
+
  @GetMapping
     public ResponseEntity<List<RolResponseDTO>> findAll() {
         List<RolResponseDTO> response = rolService.obtenerRoles();
         return ResponseEntity.ok(response);
     }
+
 @DeleteMapping
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         rolService.eliminarPorId(id);
         return ResponseEntity.noContent().build();
 }
+
     @GetMapping("/{id}")
     public ResponseEntity<RolResponseDTO> findById(@PathVariable Long id) {
         RolResponseDTO response = rolService.obtenerPorId(id);

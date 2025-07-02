@@ -2,6 +2,7 @@ package com.example.fincas_grupo3.application.services.usuario;
 
 import com.example.fincas_grupo3.application.dto.usuario.UsuarioRequestDTO;
 import com.example.fincas_grupo3.application.dto.usuario.UsuarioResponseDTO;
+import com.example.fincas_grupo3.application.exceptions.UsuarioNoEncontradoException;
 import com.example.fincas_grupo3.application.mappers.usuario.UsuarioMapper;
 import com.example.fincas_grupo3.application.usecases.usuario.UsuarioUseCases;
 import com.example.fincas_grupo3.domain.models.usuario.Usuario;
@@ -33,7 +34,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     public UsuarioResponseDTO actualizarUsuario(UsuarioRequestDTO requestDTO) {
         Usuario usuarioActual = usuarioUseCases.obtenerUsuarioPorId(requestDTO.getId());
         if (usuarioActual == null) {
-            throw new EntityNotFoundException("No se encontró el usuario con el id: " + requestDTO.getId());
+            throw new UsuarioNoEncontradoException("Usuario no encontrado");
         }
 
         Usuario usuarioParaActualizar = usuarioMapper.toModel(requestDTO);
@@ -56,7 +57,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     public UsuarioResponseDTO obtenerUsuarioPorId(Long id) {
         Usuario usuario = usuarioUseCases.obtenerUsuarioPorId(id);
         if (usuario == null) {
-            throw new EntityNotFoundException("No se encontró el usuario con el id: " + id);
+            throw new UsuarioNoEncontradoException("Usuario no encontrado");
         }
         return usuarioMapper.toDTO(usuario);
     }
@@ -71,7 +72,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     public Boolean eliminarUsuarioPorId(Long id) {
         Usuario usuario = usuarioUseCases.obtenerUsuarioPorId(id);
         if (usuario == null) {
-            throw new EntityNotFoundException("No se encontró el usuario con el id: " + id + " para eliminar.");
+            throw new UsuarioNoEncontradoException("Usuario no encontrado");
         }
         return usuarioUseCases.eliminarUsuarioPorId(id);
     }
