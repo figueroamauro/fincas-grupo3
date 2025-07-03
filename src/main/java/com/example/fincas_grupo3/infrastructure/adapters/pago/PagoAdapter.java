@@ -3,7 +3,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.pago;
 import com.example.fincas_grupo3.application.exceptions.PagoNoEncontradoException;
 import com.example.fincas_grupo3.domain.models.pago.Pago;
 import com.example.fincas_grupo3.domain.ports.out.pago.PagoOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.pago.PagoMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.pago.PagoMapper;
 import com.example.fincas_grupo3.infrastructure.entities.pago.PagoEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.pago.JPAPagoRepository;
 import org.springframework.stereotype.Component;

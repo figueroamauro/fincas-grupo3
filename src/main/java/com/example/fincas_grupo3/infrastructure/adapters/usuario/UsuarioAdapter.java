@@ -2,7 +2,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.usuario;
 
 import com.example.fincas_grupo3.domain.models.usuario.Usuario;
 import com.example.fincas_grupo3.domain.ports.out.usuario.UsuarioOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.usuario.UsuarioMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.usuario.UsuarioMapper;
 import com.example.fincas_grupo3.infrastructure.entities.usuario.UsuarioEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.usuario.JPAUsuarioRepository;
 import org.springframework.stereotype.Service;

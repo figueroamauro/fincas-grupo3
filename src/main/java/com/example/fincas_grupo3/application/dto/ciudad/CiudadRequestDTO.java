@@ -1,16 +1,14 @@
 package com.example.fincas_grupo3.application.dto.ciudad;
 
-import com.example.fincas_grupo3.domain.models.provincia.Provincia;
-
 public class CiudadRequestDTO {
     private Long id;
     private String nombre;
-    private Long provincia_id;
+    private Long provinciaId;
 
-    public CiudadRequestDTO(Long id, String nombre, Long provincia_id) {
+    public CiudadRequestDTO(Long id, String nombre, Long provinciaId) {
         this.id = id;
         this.nombre = nombre;
-        this.provincia_id = provincia_id;
+        this.provinciaId = provinciaId;
     }
 
     public Long getId() {
@@ -31,11 +29,11 @@ public class CiudadRequestDTO {
     }
 
     public Long getProvinciaId() {
-        return this.provincia_id;
+        return this.provinciaId;
     }
 
-    public void setProvinciaId(Long provincia_id) {
-        this.provincia_id = provincia_id;
+    public void setProvinciaId(Long provinciaId) {
+        this.provinciaId = provinciaId;
     }
 
 

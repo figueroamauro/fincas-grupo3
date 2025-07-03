@@ -2,7 +2,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.ciudad;
 
 import com.example.fincas_grupo3.domain.models.ciudad.Ciudad;
 import com.example.fincas_grupo3.domain.ports.out.ciudad.CiudadOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.ciudad.CiudadMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.ciudad.CiudadMapper;
 import com.example.fincas_grupo3.infrastructure.entities.ciudad.CiudadEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.ciudad.JPACiudadRepository;
 import org.springframework.stereotype.Service;

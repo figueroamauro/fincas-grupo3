@@ -3,7 +3,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.estadopublicacion;
 import com.example.fincas_grupo3.application.exceptions.EstadoPublicacionNoEncontradaException;
 import com.example.fincas_grupo3.domain.models.estadopublicacion.EstadoPublicacion;
 import com.example.fincas_grupo3.domain.ports.out.estadopublicacion.EstadoPublicacionOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.estadopublicacion.EstadoPublicacionMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.estadopublicacion.EstadoPublicacionMapper;
 import com.example.fincas_grupo3.infrastructure.entities.estadopublicacion.EstadoPublicacionEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.estadopublicacion.JPAEstadoPublicacionRepository;
 import org.springframework.stereotype.Component;

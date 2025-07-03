@@ -2,7 +2,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.provincia;
 
 import com.example.fincas_grupo3.domain.models.provincia.Provincia;
 import com.example.fincas_grupo3.domain.ports.out.provincia.ProvinciaOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.provincia.ProvinciaMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.provincia.ProvinciaMapper;
 import com.example.fincas_grupo3.infrastructure.entities.provincia.ProvinciaEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.provincia.JPAProvinciaRepository;
 import org.springframework.stereotype.Service;

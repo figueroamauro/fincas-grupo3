@@ -3,7 +3,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.estadoreserva;
 import com.example.fincas_grupo3.application.exceptions.EstadoReservaNoEncontradoException;
 import com.example.fincas_grupo3.domain.models.estadoreserva.EstadoReserva;
 import com.example.fincas_grupo3.domain.ports.out.estadoreserva.EstadoReservaOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.estadoreserva.EstadoReservaMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.estadoreserva.EstadoReservaMapper;
 import com.example.fincas_grupo3.infrastructure.entities.estadoreserva.EstadoReservaEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.estadoreserva.JPAEstadoReservaRepository;
 import org.springframework.stereotype.Component;

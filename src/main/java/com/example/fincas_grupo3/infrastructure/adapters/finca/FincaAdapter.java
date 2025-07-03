@@ -2,7 +2,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.finca;
 
 import com.example.fincas_grupo3.domain.models.finca.Finca;
 import com.example.fincas_grupo3.domain.ports.out.finca.FincaOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.finca.FincaMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.finca.FincaMapper;
 import com.example.fincas_grupo3.infrastructure.entities.finca.FincaEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.finca.JPAFincaRepository;
 import org.springframework.stereotype.Service;

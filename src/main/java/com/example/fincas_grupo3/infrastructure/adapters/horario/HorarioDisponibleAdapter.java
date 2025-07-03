@@ -2,7 +2,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.horario;
 
 import com.example.fincas_grupo3.domain.models.horario.HorarioDisponible;
 import com.example.fincas_grupo3.domain.ports.out.horario.HorarioDisponibleOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.horario.HorarioDisponibleMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.horario.HorarioDisponibleMapper;
 import com.example.fincas_grupo3.infrastructure.entities.horario.HorarioDisponibleEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.horario.JPAHorarioDisponibleRepository;
 import org.springframework.stereotype.Service;
