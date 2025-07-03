@@ -13,7 +13,7 @@ public class Ciudad {
         this.provincia = provincia;
     }
 
-    // Getters y Setters
+
     public Long getId() {
         return id;
     }
