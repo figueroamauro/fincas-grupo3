@@ -6,7 +6,7 @@ import com.example.fincas_grupo3.domain.models.finca.Finca;
 import com.example.fincas_grupo3.application.mappers.direccion.DireccionMapper;
 
 import org.mapstruct.Mapper;
-
+//Aca se mapea
 @Mapper(
         componentModel = "spring",
         uses = {DireccionMapper.class},
