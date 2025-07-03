@@ -1,24 +1,25 @@
 package com.example.fincas_grupo3.application.dto.finca;
 
-import com.example.fincas_grupo3.application.dto.direccion.DireccionRequestDTO;
-
 public class FincaRequestDTO {
     private Long id;
     private String nombre;
     private String descripcion;
     private Double tarifaHora;
     private Double tarifaDia;
-    private DireccionRequestDTO direccionRequestDTO;
+    private Long direccionId;
+    private Long usuarioId;
 
-    public FincaRequestDTO(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, DireccionRequestDTO direccionRequestDTO) {
+    public FincaRequestDTO(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, Long direccionId, Long usuarioId) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.tarifaHora = tarifaHora;
         this.tarifaDia = tarifaDia;
-        this.direccionRequestDTO = direccionRequestDTO;
+        this.direccionId = direccionId;
+        this.usuarioId = usuarioId;
     }
 
+    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -59,11 +60,19 @@ public class FincaRequestDTO {
         this.tarifaDia = tarifaDia;
     }
 
-    public DireccionRequestDTO getDireccionRequestDTO() {
-        return direccionRequestDTO;
+    public Long getDireccionId() {
+        return direccionId;
     }
 
-    public void setDireccionRequestDTO(DireccionRequestDTO direccionRequestDTO) {
-        this.direccionRequestDTO = direccionRequestDTO;
+    public void setDireccionId(Long direccionId) {
+        this.direccionId = direccionId;
+    }
+
+    public Long getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Long usuarioId) {
+        this.usuarioId = usuarioId;
     }
 }

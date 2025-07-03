@@ -1,6 +1,7 @@
 package com.example.fincas_grupo3.infrastructure.entities.finca;
 
 import com.example.fincas_grupo3.infrastructure.entities.direccion.DireccionEntidad;
+import com.example.fincas_grupo3.infrastructure.entities.usuario.UsuarioEntidad;
 import jakarta.persistence.*;
 
 @Entity
@@ -23,21 +24,28 @@ public class FincaEntidad {
     @Column(name = "tarifa_dia")
     private Double tarifaDia;
 
-    @OneToOne
-    private DireccionEntidad direccionEntidad;
+    @ManyToOne
+    @JoinColumn(name = "direccion_id", nullable = false)
+    private DireccionEntidad direccion;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private UsuarioEntidad usuario;
 
     public FincaEntidad() {
     }
 
-    public FincaEntidad(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, DireccionEntidad direccionEntidad) {
+    public FincaEntidad(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, DireccionEntidad direccion, UsuarioEntidad usuario) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.tarifaHora = tarifaHora;
         this.tarifaDia = tarifaDia;
-        this.direccionEntidad = direccionEntidad;
+        this.direccion = direccion;
+        this.usuario = usuario;
     }
 
+    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -78,11 +86,19 @@ public class FincaEntidad {
         this.tarifaDia = tarifaDia;
     }
 
-    public DireccionEntidad getDireccionEntidad() {
-        return direccionEntidad;
+    public DireccionEntidad getDireccion() {
+        return direccion;
     }
 
-    public void setDireccionEntidad(DireccionEntidad direccionEntidad) {
-        this.direccionEntidad = direccionEntidad;
+    public void setDireccion(DireccionEntidad direccion) {
+        this.direccion = direccion;
+    }
+
+    public UsuarioEntidad getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioEntidad usuario) {
+        this.usuario = usuario;
     }
 }
