@@ -1,18 +1,22 @@
 package com.example.fincas_grupo3.application.dto.finca;
 
+import com.example.fincas_grupo3.application.dto.direccion.DireccionRequestDTO;
+
 public class FincaRequestDTO {
     private Long id;
     private String nombre;
     private String descripcion;
     private Double tarifaHora;
     private Double tarifaDia;
+    private DireccionRequestDTO direccionRequestDTO;
 
-    public FincaRequestDTO(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia) {
+    public FincaRequestDTO(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, DireccionRequestDTO direccionRequestDTO) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.tarifaHora = tarifaHora;
         this.tarifaDia = tarifaDia;
+        this.direccionRequestDTO = direccionRequestDTO;
     }
 
     public Long getId() {
@@ -53,5 +57,13 @@ public class FincaRequestDTO {
 
     public void setTarifaDia(Double tarifaDia) {
         this.tarifaDia = tarifaDia;
+    }
+
+    public DireccionRequestDTO getDireccionRequestDTO() {
+        return direccionRequestDTO;
+    }
+
+    public void setDireccionRequestDTO(DireccionRequestDTO direccionRequestDTO) {
+        this.direccionRequestDTO = direccionRequestDTO;
     }
 }

@@ -1,18 +1,22 @@
 package com.example.fincas_grupo3.domain.models.finca;
 
+import com.example.fincas_grupo3.domain.models.direccion.Direccion;
+
 public class Finca {
     private Long id;
     private String nombre;
     private String descripcion;
     private Double tarifaHora;
     private Double tarifaDia;
+    private Direccion direccion;
 
-    public Finca(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia) {
+    public Finca(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, Direccion direccion) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.tarifaHora = tarifaHora;
         this.tarifaDia = tarifaDia;
+        this.direccion = direccion;
     }
 
     public Long getId() {
@@ -53,5 +57,13 @@ public class Finca {
 
     public void setTarifaDia(Double tarifaDia) {
         this.tarifaDia = tarifaDia;
+    }
+
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
     }
 }
