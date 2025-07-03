@@ -222,9 +222,9 @@ IF NOT EXISTS (
 )
 BEGIN
 	CREATE TABLE  finca_tipo(
-	id BIGINT PRIMARY KEY IDENTITY(1,1),
 	finca_id BIGINT NOT NULL,
-	tipo_reserva_id BIGINT NOT NULL
+	tipo_reserva_id BIGINT NOT NULL,
+	PRIMARY KEY(tipo_reserva_id, finca_id)
 );
 END;
 
@@ -606,19 +606,19 @@ END;
 
 
 
---DESCUENTOS -> FINCA_TIPO
+--DESCUENTOS -> FINCA
 IF NOT EXISTS (
     SELECT * FROM sys.foreign_keys
-    WHERE NAME = 'fk_descuentos_finca_tipo'
+    WHERE NAME = 'fk_descuentos_finca'
 )
 BEGIN
     ALTER TABLE descuentos
-    ADD finca_tipo_id bigint NOT NULL;
+    ADD finca_id bigint NOT NULL;
 
 	ALTER TABLE descuentos
-    ADD CONSTRAINT fk_descuentos_finca_tipo
-    FOREIGN KEY (finca_tipo_id)
-    REFERENCES finca_tipo(id);
+    ADD CONSTRAINT fk_descuentos_finca
+    FOREIGN KEY (finca_id)
+    REFERENCES fincas(id);
 END;
 
 
