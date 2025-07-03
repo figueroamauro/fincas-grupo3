@@ -1,5 +1,6 @@
 package com.example.fincas_grupo3.infrastructure.entities.finca;
 
+import com.example.fincas_grupo3.infrastructure.entities.direccion.DireccionEntidad;
 import jakarta.persistence.*;
 
 @Entity
@@ -22,15 +23,19 @@ public class FincaEntidad {
     @Column(name = "tarifa_dia")
     private Double tarifaDia;
 
+    @OneToOne
+    private DireccionEntidad direccionEntidad;
+
     public FincaEntidad() {
     }
 
-    public FincaEntidad(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia) {
+    public FincaEntidad(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, DireccionEntidad direccionEntidad) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.tarifaHora = tarifaHora;
         this.tarifaDia = tarifaDia;
+        this.direccionEntidad = direccionEntidad;
     }
 
     public Long getId() {
@@ -71,5 +76,13 @@ public class FincaEntidad {
 
     public void setTarifaDia(Double tarifaDia) {
         this.tarifaDia = tarifaDia;
+    }
+
+    public DireccionEntidad getDireccionEntidad() {
+        return direccionEntidad;
+    }
+
+    public void setDireccionEntidad(DireccionEntidad direccionEntidad) {
+        this.direccionEntidad = direccionEntidad;
     }
 }
