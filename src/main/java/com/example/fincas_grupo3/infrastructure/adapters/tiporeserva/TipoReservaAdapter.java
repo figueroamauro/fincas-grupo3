@@ -3,7 +3,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.tiporeserva;
 import com.example.fincas_grupo3.application.exceptions.TipoReservaNoEncontradoException;
 import com.example.fincas_grupo3.domain.models.tiporeserva.TipoReserva;
 import com.example.fincas_grupo3.domain.ports.out.tiporeserva.TipoReservaOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.tiporeserva.TipoReservaMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.tiporeserva.TipoReservaMapper;
 import com.example.fincas_grupo3.infrastructure.entities.tiporeserva.TipoReservaEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.tiporeserva.JPATipoReservaRepository;
 import org.springframework.stereotype.Component;

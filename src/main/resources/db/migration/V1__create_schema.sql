@@ -1,8 +1,5 @@
 
 
-
-
-
 -- ===================== ESTRUCTURA BASE DE LAS TABLAS =====================
 
 
@@ -396,7 +393,7 @@ IF NOT EXISTS (
 )
 BEGIN
     ALTER TABLE usuarios
-    ADD direccion_id bigint NOT NULL;
+    ADD direccion_id bigint;
 
 	ALTER TABLE usuarios
     ADD CONSTRAINT fk_usuarios_direcciones
@@ -513,6 +510,21 @@ BEGIN
     ADD CONSTRAINT fk_ciudades_provincias
     FOREIGN KEY (provincia_id)
     REFERENCES provincias(id);
+END;
+
+--DIRECCIONES -> CIUDADES
+IF NOT EXISTS (
+    SELECT * FROM sys.foreign_keys
+    WHERE NAME = 'fk_direcciones_ciudades'
+)
+BEGIN
+    ALTER TABLE direcciones
+    ADD ciudad_id bigint NOT NULL;
+
+	ALTER TABLE direcciones
+    ADD CONSTRAINT fk_direcciones_ciudades
+    FOREIGN KEY (ciudad_id)
+    REFERENCES ciudades(id);
 END;
 
 

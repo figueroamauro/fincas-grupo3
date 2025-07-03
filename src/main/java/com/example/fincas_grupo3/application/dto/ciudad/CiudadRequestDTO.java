@@ -1,7 +1,5 @@
 package com.example.fincas_grupo3.application.dto.ciudad;
 
-import com.example.fincas_grupo3.domain.models.provincia.Provincia;
-
 public class CiudadRequestDTO {
     private Long id;
     private String nombre;

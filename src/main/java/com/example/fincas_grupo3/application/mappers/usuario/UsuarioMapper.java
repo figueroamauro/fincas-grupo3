@@ -1,5 +1,6 @@
 package com.example.fincas_grupo3.application.mappers.usuario;
 
+import com.example.fincas_grupo3.application.dto.direccion.DireccionResponseDTO;
 import com.example.fincas_grupo3.application.dto.usuario.UsuarioRequestDTO;
 import com.example.fincas_grupo3.application.dto.usuario.UsuarioResponseDTO;
 import com.example.fincas_grupo3.application.exceptions.DireccionNoEncontradaException;
@@ -22,19 +23,28 @@ public abstract class UsuarioMapper {
     public abstract Usuario toModel(UsuarioRequestDTO dto);
 
 
-
-@Mapping(source = "direccion", target = "direccionResponseDTO")
-    public abstract UsuarioResponseDTO toDTO (Usuario usuario);
-
+    @Mapping(source = "direccion", target = "direccion", qualifiedByName = "toDireccionDTO")
+    public abstract UsuarioResponseDTO toDTO(Usuario usuario);
 
 
     @Named("mapDireccionIdToDireccion")
     protected Direccion mapDireccionIdToDireccion(Long direccionId) {
-
-        Direccion direccion = direccionUseCases.obtenerDireccionPorId(direccionId);
-        if(direccion == null) {
+        if (direccionId == null) {
+            return null;
+        }
+            Direccion direccion = direccionUseCases.obtenerDireccionPorId(direccionId);
+        if (direccion == null) {
             throw new DireccionNoEncontradaException("Direccion con id " + direccionId + " no encontrada.");
         }
         return direccion;
+    }
+
+    @Named("toDireccionDTO")
+    public DireccionResponseDTO toDireccionDTO(Direccion direccion) {
+        if (direccion == null) {
+            return null;
+        }
+        direccion = direccionUseCases.obtenerDireccionPorId(direccion.getId());
+        return new DireccionResponseDTO(direccion.getId(), direccion.getCalle(), direccion.getNumero(), direccion.getCodigoPostal(), direccion.getCiudad().getNombre());
     }
 }

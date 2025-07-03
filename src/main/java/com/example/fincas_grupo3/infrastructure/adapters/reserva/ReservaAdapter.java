@@ -3,7 +3,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.reserva;
 import com.example.fincas_grupo3.application.exceptions.ReservaNoEncontradaException;
 import com.example.fincas_grupo3.domain.models.reserva.Reserva;
 import com.example.fincas_grupo3.domain.ports.out.reserva.ReservaOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.reserva.ReservaMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.reserva.ReservaMapper;
 import com.example.fincas_grupo3.infrastructure.entities.reserva.ReservaEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.reserva.JPAReservaRepository;
 import org.springframework.stereotype.Component;

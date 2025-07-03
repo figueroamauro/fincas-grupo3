@@ -2,7 +2,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.foto;
 
 import com.example.fincas_grupo3.domain.models.foto.Foto;
 import com.example.fincas_grupo3.domain.ports.out.foto.FotoOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.foto.FotoMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.foto.FotoMapper;
 import com.example.fincas_grupo3.infrastructure.entities.foto.FotoEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.foto.JPAFotoRepository;
 import org.springframework.stereotype.Service;

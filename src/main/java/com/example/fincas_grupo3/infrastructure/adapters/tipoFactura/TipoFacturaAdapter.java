@@ -3,7 +3,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.tipoFactura;
 import com.example.fincas_grupo3.application.exceptions.TipoFacturaNoEncontradaException;
 import com.example.fincas_grupo3.domain.models.tipoFactura.TipoFactura;
 import com.example.fincas_grupo3.domain.ports.out.tipoFactura.TipoFacturaOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.tipoFactura.TipoFacturaMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.tipoFactura.TipoFacturaMapper;
 import com.example.fincas_grupo3.infrastructure.entities.tipoFactura.TipoFacturaEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.tipoFactura.JPATipoFacturaRepository;
 import org.springframework.stereotype.Component;

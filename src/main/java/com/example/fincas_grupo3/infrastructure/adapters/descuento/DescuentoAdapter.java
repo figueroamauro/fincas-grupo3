@@ -1,6 +1,6 @@
 package com.example.fincas_grupo3.infrastructure.adapters.descuento;
 
-import com.example.fincas_grupo3.infrastructure.Mappers.descuento.DescuentoMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.descuento.DescuentoMapper;
 import com.example.fincas_grupo3.domain.models.descuento.Descuento;
 import com.example.fincas_grupo3.domain.ports.out.descuento.DescuentoOutPort;
 import com.example.fincas_grupo3.infrastructure.entities.descuento.DescuentoEntidad;

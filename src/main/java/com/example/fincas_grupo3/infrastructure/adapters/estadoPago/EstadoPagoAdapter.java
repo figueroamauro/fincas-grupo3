@@ -3,7 +3,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.estadoPago;
 import com.example.fincas_grupo3.application.exceptions.EstadoPagoNoEncontradoException;
 import com.example.fincas_grupo3.domain.models.estadoPago.EstadoPago;
 import com.example.fincas_grupo3.domain.ports.out.estadoPago.EstadoPagoOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.estadoPago.EstadoPagoMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.estadoPago.EstadoPagoMapper;
 import com.example.fincas_grupo3.infrastructure.entities.estadoPago.EstadoPagoEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.estadoPago.JPAEstadoPagoRepository;
 import org.springframework.stereotype.Component;

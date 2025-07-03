@@ -3,7 +3,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.direccion;
 
 import com.example.fincas_grupo3.domain.models.direccion.Direccion;
 import com.example.fincas_grupo3.domain.ports.out.direccion.DireccionOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.direccion.DireccionMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.direccion.DireccionMapper;
 import com.example.fincas_grupo3.infrastructure.entities.direccion.DireccionEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.direccion.JPADireccionRepository;
 
