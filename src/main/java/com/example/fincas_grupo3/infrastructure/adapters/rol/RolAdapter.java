@@ -2,7 +2,7 @@ package com.example.fincas_grupo3.infrastructure.adapters.rol;
 
 import com.example.fincas_grupo3.domain.models.rol.Rol;
 import com.example.fincas_grupo3.domain.ports.out.rol.RolOutPort;
-import com.example.fincas_grupo3.infrastructure.Mappers.rol.RolMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.rol.RolMapper;
 import com.example.fincas_grupo3.infrastructure.entities.rol.RolEntidad;
 import com.example.fincas_grupo3.infrastructure.repositories.rol.JPARolRepository;
 import org.springframework.stereotype.Service;

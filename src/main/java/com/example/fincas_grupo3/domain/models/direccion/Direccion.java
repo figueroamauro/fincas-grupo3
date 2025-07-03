@@ -1,11 +1,25 @@
 package com.example.fincas_grupo3.domain.models.direccion;
 
+import com.example.fincas_grupo3.domain.models.ciudad.Ciudad;
+
 public class Direccion {
 
     private Long id;
-    String calle;
-    String numero;
-    String codigoPostal;
+    private String calle;
+    private String numero;
+    private String codigoPostal;
+    private Ciudad ciudad;
+
+    public Direccion() {
+    }
+
+    public Direccion(Long id, String calle, String numero, String codigoPostal, Ciudad ciudad) {
+        this.id = id;
+        this.calle = calle;
+        this.numero = numero;
+        this.codigoPostal = codigoPostal;
+        this.ciudad = ciudad;
+    }
 
     public Long getId() {
         return id;
@@ -39,4 +53,11 @@ public class Direccion {
         this.calle = calle;
     }
 
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
+    }
 }

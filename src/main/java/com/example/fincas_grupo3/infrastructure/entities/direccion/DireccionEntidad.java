@@ -1,5 +1,7 @@
 package com.example.fincas_grupo3.infrastructure.entities.direccion;
 
+import com.example.fincas_grupo3.domain.models.ciudad.Ciudad;
+import com.example.fincas_grupo3.infrastructure.entities.ciudad.CiudadEntidad;
 import jakarta.persistence.*;
 
 @Entity
@@ -19,14 +21,20 @@ public class DireccionEntidad {
     @Column(name = "codigo_postal", nullable = false)
     private String codigoPostal;
 
+    @ManyToOne
+    @JoinColumn(name = "ciudad_id")
+    private CiudadEntidad ciudadEntidad;
+
+
     public DireccionEntidad() {
     }
 
-    public DireccionEntidad(Long id, String calle, String numero, String codigoPostal) {
+    public DireccionEntidad(Long id, String calle, String numero, String codigoPostal, CiudadEntidad ciudadEntidad) {
         this.id = id;
         this.calle = calle;
         this.numero = numero;
         this.codigoPostal = codigoPostal;
+        this.ciudadEntidad = ciudadEntidad;
     }
 
     public Long getId() {
@@ -59,5 +67,13 @@ public class DireccionEntidad {
 
     public void setCodigoPostal(String codigoPostal) {
         this.codigoPostal = codigoPostal;
+    }
+
+    public CiudadEntidad getCiudadEntidad() {
+        return ciudadEntidad;
+    }
+
+    public void setCiudadEntidad(CiudadEntidad ciudadEntidad) {
+        this.ciudadEntidad = ciudadEntidad;
     }
 }

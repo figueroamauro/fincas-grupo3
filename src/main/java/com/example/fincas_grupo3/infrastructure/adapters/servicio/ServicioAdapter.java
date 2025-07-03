@@ -1,6 +1,6 @@
     package com.example.fincas_grupo3.infrastructure.adapters.servicio;
 
-    import com.example.fincas_grupo3.infrastructure.Mappers.servicio.ServicioMapper;
+    import com.example.fincas_grupo3.infrastructure.mappers.servicio.ServicioMapper;
     import com.example.fincas_grupo3.domain.models.servicio.Servicio;
     import com.example.fincas_grupo3.domain.ports.out.servicio.ServicioOutPort;
     import com.example.fincas_grupo3.infrastructure.entities.servicio.ServicioEntidad;

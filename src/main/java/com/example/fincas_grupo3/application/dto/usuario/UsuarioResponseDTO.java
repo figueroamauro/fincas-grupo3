@@ -8,7 +8,7 @@ public class UsuarioResponseDTO {
     private String apellido;
     private String correo;
     private String telefono;
-    private DireccionResponseDTO direccionResponseDTO;
+    private DireccionResponseDTO direccion;
 
     public UsuarioResponseDTO(Long id, String nombre, String apellido, String correo, String telefono, DireccionResponseDTO direccionResponseDTO) {
         this.id = id;
@@ -16,7 +16,7 @@ public class UsuarioResponseDTO {
         this.apellido = apellido;
         this.correo = correo;
         this.telefono = telefono;
-        this.direccionResponseDTO = direccionResponseDTO;
+        this.direccion = direccionResponseDTO;
     }
 
 
@@ -59,12 +59,12 @@ public class UsuarioResponseDTO {
         this.telefono = telefono;
     }
 
-    public DireccionResponseDTO getDireccionResponseDTO() {
-        return direccionResponseDTO;
+    public DireccionResponseDTO getDireccion() {
+        return direccion;
     }
 
-    public void setDireccionResponseDTO(DireccionResponseDTO direccionResponseDTO) {
-        this.direccionResponseDTO = direccionResponseDTO;
+    public void setDireccion(DireccionResponseDTO direccion) {
+        this.direccion = direccion;
     }
 }
 

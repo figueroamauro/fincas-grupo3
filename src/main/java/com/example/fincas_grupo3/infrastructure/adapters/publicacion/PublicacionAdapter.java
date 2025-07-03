@@ -3,12 +3,11 @@ import com.example.fincas_grupo3.application.exceptions.PublicacionNoEncontradaE
 import com.example.fincas_grupo3.domain.models.publicacion.Publicacion;
 import com.example.fincas_grupo3.domain.ports.out.publicacion.PublicacionOutPort;
 import com.example.fincas_grupo3.infrastructure.entities.publicacion.PublicacionEntidad;
-import com.example.fincas_grupo3.infrastructure.Mappers.publicacion.PublicacionMapper;
+import com.example.fincas_grupo3.infrastructure.mappers.publicacion.PublicacionMapper;
 import com.example.fincas_grupo3.infrastructure.repositories.publicacion.JPAPublicacionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PublicacionAdapter implements PublicacionOutPort {

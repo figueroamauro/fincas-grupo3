@@ -6,12 +6,17 @@ public class DireccionResponseDTO {
     private String calle;
     private String numero;
     private String codigoPostal;
+    private String ciudad;
 
-    public DireccionResponseDTO(Long id, String calle, String numero, String codigoPostal) {
+    public DireccionResponseDTO() {
+    }
+
+    public DireccionResponseDTO(Long id, String calle, String numero, String codigoPostal, String ciudad) {
         this.id = id;
         this.calle = calle;
         this.numero = numero;
         this.codigoPostal = codigoPostal;
+        this.ciudad = ciudad;
     }
 
     public Long getId() {
@@ -44,5 +49,13 @@ public class DireccionResponseDTO {
 
     public void setCodigoPostal(String codigoPostal) {
         this.codigoPostal = codigoPostal;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
 }
