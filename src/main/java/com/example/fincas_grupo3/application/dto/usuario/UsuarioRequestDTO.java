@@ -1,5 +1,7 @@
 package com.example.fincas_grupo3.application.dto.usuario;
 
+import java.util.List; // Importar List
+
 public class UsuarioRequestDTO {
     private Long id;
     private  String nombre;
@@ -8,8 +10,9 @@ public class UsuarioRequestDTO {
     private String contraseña;
     private String telefono;
     private Long direccionId;
+    private List<Long> rolIds;
 
-    public UsuarioRequestDTO(Long id, String nombre, String apellido, String correo, String contraseña, String telefono, Long direccionId) {
+    public UsuarioRequestDTO(Long id, String nombre, String apellido, String correo, String contraseña, String telefono, Long direccionId, List<Long> rolIds) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -17,7 +20,9 @@ public class UsuarioRequestDTO {
         this.contraseña = contraseña;
         this.telefono = telefono;
         this.direccionId = direccionId;
+        this.rolIds = rolIds;
     }
+
 
 
     public Long getId() {
@@ -75,5 +80,12 @@ public class UsuarioRequestDTO {
     public void setDireccionId(Long direccionId) {
         this.direccionId = direccionId;
     }
-}
 
+    public List<Long> getRolIds() {
+        return rolIds;
+    }
+
+    public void setRolIds(List<Long> rolIds) {
+        this.rolIds = rolIds;
+    }
+}
