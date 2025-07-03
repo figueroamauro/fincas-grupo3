@@ -1,17 +1,21 @@
 package com.example.fincas_grupo3.domain.models.usuario;
 
 import com.example.fincas_grupo3.domain.models.direccion.Direccion;
+import com.example.fincas_grupo3.domain.models.rol.Rol;
+
+import java.util.Set; // Importar Set
 
 public class Usuario {
     private Long id;
-    private  String nombre;
+    private String nombre;
     private String apellido;
     private String correo;
     private String contraseña;
     private String telefono;
     private Direccion direccion;
+    private Set<Rol> roles;
 
-    public Usuario(Long id, String nombre, String apellido, String correo, String contraseña, String telefono, Direccion direccion) {
+    public Usuario(Long id, String nombre, String apellido, String correo, String contraseña, String telefono, Direccion direccion, Set<Rol> roles) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -19,7 +23,9 @@ public class Usuario {
         this.contraseña = contraseña;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.roles = roles;
     }
+
 
 
     public Long getId() {
@@ -76,5 +82,13 @@ public class Usuario {
 
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
+    }
+
+    public Set<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Rol> roles) {
+        this.roles = roles;
     }
 }

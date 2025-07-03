@@ -1,9 +1,9 @@
 package com.example.fincas_grupo3.infrastructure.entities.usuario;
 
-
-
 import com.example.fincas_grupo3.infrastructure.entities.direccion.DireccionEntidad;
+import com.example.fincas_grupo3.infrastructure.entities.rol.RolEntidad;
 import jakarta.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "usuarios")
@@ -27,10 +27,18 @@ public class UsuarioEntidad  {
     @JoinColumn(name = "direccion_id", referencedColumnName = "id", unique = true)
     private DireccionEntidad direccion;
 
+    @ManyToMany
+    @JoinTable(
+            name = "rol_usuarios",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "rol_id")
+    )
+    private Set<RolEntidad> roles;
+
     public UsuarioEntidad() {
     }
 
-    public UsuarioEntidad(Long id, String nombre, String apellido, String correo, String contraseña, String telefono, DireccionEntidad direccion) {
+    public UsuarioEntidad(Long id, String nombre, String apellido, String correo, String contraseña, String telefono, DireccionEntidad direccion, Set<RolEntidad> roles) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -38,7 +46,10 @@ public class UsuarioEntidad  {
         this.contraseña = contraseña;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.roles = roles;
     }
+
+
 
 
     public Long getId() {
@@ -95,5 +106,13 @@ public class UsuarioEntidad  {
 
     public void setDireccion(DireccionEntidad direccion) {
         this.direccion = direccion;
+    }
+
+    public Set<RolEntidad> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<RolEntidad> roles) {
+        this.roles = roles;
     }
 }
