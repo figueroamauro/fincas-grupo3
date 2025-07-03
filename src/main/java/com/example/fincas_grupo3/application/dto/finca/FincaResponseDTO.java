@@ -1,6 +1,7 @@
 package com.example.fincas_grupo3.application.dto.finca;
 
 import com.example.fincas_grupo3.application.dto.direccion.DireccionResponseDTO;
+import com.example.fincas_grupo3.application.dto.usuario.UsuarioResponseDTO;
 
 public class FincaResponseDTO {
     private Long id;
@@ -8,17 +9,20 @@ public class FincaResponseDTO {
     private String descripcion;
     private Double tarifaHora;
     private Double tarifaDia;
-    private DireccionResponseDTO direccionResponseDTO;
+    private DireccionResponseDTO direccion;
+    private UsuarioResponseDTO usuario;
 
-    public FincaResponseDTO(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, DireccionResponseDTO direccionResponseDTO) {
+    public FincaResponseDTO(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, DireccionResponseDTO direccion, UsuarioResponseDTO usuario) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.tarifaHora = tarifaHora;
         this.tarifaDia = tarifaDia;
-        this.direccionResponseDTO = direccionResponseDTO;
+        this.direccion = direccion;
+        this.usuario = usuario;
     }
 
+    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -59,11 +63,19 @@ public class FincaResponseDTO {
         this.tarifaDia = tarifaDia;
     }
 
-    public DireccionResponseDTO getDireccionResponseDTO() {
-        return direccionResponseDTO;
+    public DireccionResponseDTO getDireccion() {
+        return direccion;
     }
 
-    public void setDireccionResponseDTO(DireccionResponseDTO direccionResponseDTO) {
-        this.direccionResponseDTO = direccionResponseDTO;
+    public void setDireccion(DireccionResponseDTO direccion) {
+        this.direccion = direccion;
+    }
+
+    public UsuarioResponseDTO getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioResponseDTO usuario) {
+        this.usuario = usuario;
     }
 }
