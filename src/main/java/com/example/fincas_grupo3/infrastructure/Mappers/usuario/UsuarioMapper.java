@@ -30,9 +30,7 @@ public abstract class UsuarioMapper {
 
     @Named("mapDireccionIdToDireccionEntity")
     protected DireccionEntidad mapDireccionIdToDireccionEntity(Long direccionId) {
-        if (direccionId == null) {
-            return null;
-        }
+
         return jpaDireccionRepository.findById(direccionId)
                 .orElseThrow(() -> new DireccionNoEncontradaException("La dirección con id " + direccionId + " asignada al usuario no fue encontrada."));
     }

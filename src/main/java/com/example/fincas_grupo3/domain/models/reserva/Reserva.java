@@ -1,6 +1,9 @@
 package com.example.fincas_grupo3.domain.models.reserva;
 
 import com.example.fincas_grupo3.domain.models.estadoreserva.EstadoReserva;
+import com.example.fincas_grupo3.domain.models.finca.Finca;
+import com.example.fincas_grupo3.domain.models.tiporeserva.TipoReserva;
+import com.example.fincas_grupo3.domain.models.usuario.Usuario;
 
 import java.time.LocalDateTime;
 
@@ -10,13 +13,20 @@ public class Reserva {
     private LocalDateTime fechaFin;
     private Double precioTotal;
     private EstadoReserva estadoReserva;
+    private Usuario usuario;
+    private Finca finca;
+    private TipoReserva tipoReserva;
 
-    public Reserva(Long id, LocalDateTime fechaInicio, LocalDateTime fechaFin, Double precioTotal, EstadoReserva estadoReserva) {
+
+    public Reserva(Long id, LocalDateTime fechaInicio, LocalDateTime fechaFin, Double precioTotal, EstadoReserva estadoReserva, Usuario usuario, Finca finca, TipoReserva tipoReserva) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.precioTotal = precioTotal;
         this.estadoReserva = estadoReserva;
+        this.usuario = usuario;
+        this.finca = finca;
+        this.tipoReserva = tipoReserva;
     }
 
     public Long getId() {
@@ -57,5 +67,29 @@ public class Reserva {
 
     public void setEstadoReserva(EstadoReserva estadoReserva) {
         this.estadoReserva = estadoReserva;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Finca getFinca() {
+        return finca;
+    }
+
+    public void setFinca(Finca finca) {
+        this.finca = finca;
+    }
+
+    public TipoReserva getTipoReserva() {
+        return tipoReserva;
+    }
+
+    public void setTipoReserva(TipoReserva tipoReserva) {
+        this.tipoReserva = tipoReserva;
     }
 }

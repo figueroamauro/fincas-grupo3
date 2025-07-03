@@ -1,6 +1,9 @@
 package com.example.fincas_grupo3.infrastructure.entities.reserva;
 
 import com.example.fincas_grupo3.infrastructure.entities.estadoreserva.EstadoReservaEntidad;
+import com.example.fincas_grupo3.infrastructure.entities.finca.FincaEntidad;
+import com.example.fincas_grupo3.infrastructure.entities.tiporeserva.TipoReservaEntidad;
+import com.example.fincas_grupo3.infrastructure.entities.usuario.UsuarioEntidad;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -25,18 +28,33 @@ public class ReservaEntidad {
     @JoinColumn(name = "estado_id", referencedColumnName = "id", nullable = false)
     private EstadoReservaEntidad estadoReservaEntidad;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id", nullable = false)
+    private UsuarioEntidad usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "finca_id", referencedColumnName = "id", nullable = false)
+    private FincaEntidad finca;
+
+    @ManyToOne
+    @JoinColumn(name = "tipo_reserva_id", referencedColumnName = "id", nullable = false)
+    private TipoReservaEntidad tipoReserva;
+
+
 
     public ReservaEntidad() {
     }
 
-    public ReservaEntidad(Long id, LocalDateTime fechaInicio, LocalDateTime fechaFin, Double precioTotal, EstadoReservaEntidad estadoReservaEntidad) {
+    public ReservaEntidad(Long id, LocalDateTime fechaInicio, LocalDateTime fechaFin, Double precioTotal, EstadoReservaEntidad estadoReservaEntidad, UsuarioEntidad usuario, FincaEntidad finca, TipoReservaEntidad tipoReserva) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.precioTotal = precioTotal;
         this.estadoReservaEntidad = estadoReservaEntidad;
+        this.usuario = usuario;
+        this.finca = finca;
+        this.tipoReserva = tipoReserva;
     }
-
 
     public Long getId() {
         return id;
@@ -76,5 +94,29 @@ public class ReservaEntidad {
 
     public void setEstadoReservaEntidad(EstadoReservaEntidad estadoReservaEntidad) {
         this.estadoReservaEntidad = estadoReservaEntidad;
+    }
+
+    public UsuarioEntidad getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioEntidad usuario) {
+        this.usuario = usuario;
+    }
+
+    public FincaEntidad getFinca() {
+        return finca;
+    }
+
+    public void setFinca(FincaEntidad finca) {
+        this.finca = finca;
+    }
+
+    public TipoReservaEntidad getTipoReserva() {
+        return tipoReserva;
+    }
+
+    public void setTipoReserva(TipoReservaEntidad tipoReserva) {
+        this.tipoReserva = tipoReserva;
     }
 }

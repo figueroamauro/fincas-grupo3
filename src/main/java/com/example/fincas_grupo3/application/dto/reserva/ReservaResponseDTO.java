@@ -1,5 +1,7 @@
 package com.example.fincas_grupo3.application.dto.reserva;
 
+import com.example.fincas_grupo3.application.dto.finca.FincaResponseDTO;
+import com.example.fincas_grupo3.application.dto.usuario.UsuarioResponseDTO;
 
 import java.time.LocalDateTime;
 
@@ -9,15 +11,21 @@ public class ReservaResponseDTO {
     private LocalDateTime fechaFin;
     private Double precioTotal;
     private String nombreEstado;
+    private String nombreTipoReserva;
+    private UsuarioResponseDTO usuario;
+    private FincaResponseDTO finca;
 
 
 
-    public ReservaResponseDTO(Long id, LocalDateTime fechaInicio, LocalDateTime fechaFin, Double precioTotal, String nombreEstado) {
+    public ReservaResponseDTO(Long id, LocalDateTime fechaInicio, LocalDateTime fechaFin, Double precioTotal, String nombreEstado, String nombreTipoReserva, UsuarioResponseDTO usuario, FincaResponseDTO finca) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.precioTotal = precioTotal;
         this.nombreEstado = nombreEstado;
+        this.nombreTipoReserva = nombreTipoReserva;
+        this.usuario = usuario;
+        this.finca = finca;
     }
 
     public Long getId() {
@@ -58,5 +66,29 @@ public class ReservaResponseDTO {
 
     public void setNombreEstado(String nombreEstado) {
         this.nombreEstado = nombreEstado;
+    }
+
+    public String getNombreTipoReserva() {
+        return nombreTipoReserva;
+    }
+
+    public void setNombreTipoReserva(String nombreTipoReserva) {
+        this.nombreTipoReserva = nombreTipoReserva;
+    }
+
+    public UsuarioResponseDTO getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioResponseDTO usuario) {
+        this.usuario = usuario;
+    }
+
+    public FincaResponseDTO getFinca() {
+        return finca;
+    }
+
+    public void setFinca(FincaResponseDTO finca) {
+        this.finca = finca;
     }
 }

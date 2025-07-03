@@ -9,6 +9,7 @@ public class CiudadResponseDTO {
     private String nombreProvincia;
 
 
+
     public CiudadResponseDTO(Long id, String nombre, String nombreProvincia) {
         this.id = id;
         this.nombre = nombre;
