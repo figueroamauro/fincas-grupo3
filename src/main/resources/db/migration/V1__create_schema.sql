@@ -298,33 +298,6 @@ CREATE TABLE pagos (
 );
 END;
 
-
---MEDIOS_PAGO
-IF NOT EXISTS (
-    SELECT * FROM INFORMATION_SCHEMA.TABLES
-    WHERE TABLE_NAME = 'medios_pago' AND TABLE_TYPE = 'BASE TABLE'
-)
-BEGIN
-	CREATE TABLE medios_pago(
-	id BIGINT PRIMARY KEY IDENTITY(1,1),
-	nombre NVARCHAR(50) NOT NULL UNIQUE
-);
-END;
-
-
---TIPOS_MONEDA
-IF NOT EXISTS (
-    SELECT * FROM INFORMATION_SCHEMA.TABLES
-    WHERE TABLE_NAME = 'tipos_moneda' AND TABLE_TYPE = 'BASE TABLE'
-)
-BEGIN
-	CREATE TABLE tipos_moneda(
-	id BIGINT PRIMARY KEY IDENTITY(1,1),
-	nombre NVARCHAR(50) NOT NULL UNIQUE
-);
-END;
-
-
 --ESTADOS_PAGOS
 IF NOT EXISTS (
     SELECT * FROM INFORMATION_SCHEMA.TABLES
@@ -708,12 +681,10 @@ BEGIN
 END;
 
 
---PAGOS -> ESTADOS_PAGO, MEDIOS_PAGO, TIPOS_MONEDA, RESERVAS
+--PAGOS -> ESTADOS_PAGO, RESERVAS
 IF NOT EXISTS (
     SELECT * FROM sys.foreign_keys
     WHERE NAME = 'fk_pagos_estados_pago'
-    OR NAME = 'fk_pagos_medios_pago'
-    OR NAME = 'fk_pagos_tipos_moneda'
     OR NAME = 'fk_pagos_reservas'
 )
 BEGIN
@@ -725,21 +696,6 @@ BEGIN
     FOREIGN KEY (estado_id)
     REFERENCES estados_pago(id);
 
- 	ALTER TABLE pagos
-    ADD medio_pago_id bigint NOT NULL;
-
- 	ALTER TABLE pagos
-    ADD CONSTRAINT fk_pagos_medios_pago
-    FOREIGN KEY (medio_pago_id)
-    REFERENCES medios_pago(id);
-
- 	ALTER TABLE pagos
-    ADD tipo_moneda_id bigint NOT NULL;
-
-    ALTER TABLE pagos
-    ADD CONSTRAINT fk_pagos_tipos_moneda
-    FOREIGN KEY (tipo_moneda_id)
-    REFERENCES tipos_moneda(id);
 
     ALTER TABLE pagos
     ADD reserva_id bigint NOT NULL;
