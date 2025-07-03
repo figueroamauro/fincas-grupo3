@@ -5,6 +5,7 @@ import com.example.fincas_grupo3.application.dto.reserva.ReservaResponseDTO;
 import com.example.fincas_grupo3.application.exceptions.EstadoReservaNoEncontradoException;
 import com.example.fincas_grupo3.application.exceptions.FincaNoEncontradaException;
 import com.example.fincas_grupo3.application.exceptions.TipoReservaNoEncontradoException;
+import com.example.fincas_grupo3.application.exceptions.UsuarioNoEncontradoException;
 import com.example.fincas_grupo3.application.mappers.finca.FincaMapper;
 import com.example.fincas_grupo3.application.mappers.usuario.UsuarioMapper;
 import com.example.fincas_grupo3.application.usecases.estadoreserva.EstadoReservaUseCases;
@@ -16,14 +17,16 @@ import com.example.fincas_grupo3.domain.models.finca.Finca;
 import com.example.fincas_grupo3.domain.models.reserva.Reserva;
 import com.example.fincas_grupo3.domain.models.tiporeserva.TipoReserva;
 import com.example.fincas_grupo3.domain.models.usuario.Usuario;
-import jakarta.persistence.EntityNotFoundException;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Mapper(componentModel = "spring",
-        uses = {UsuarioMapper.class, FincaMapper.class}, // <-- Se agregan los mappers que se van a usar
+        // ESTA ES LA CORRECCIÓN MÁS IMPORTANTE:
+        // Le decimos a este mapper que puede usar FincaMapper y UsuarioMapper
+        // para convertir los objetos Finca y Usuario.
+        uses = {UsuarioMapper.class, FincaMapper.class},
         implementationName = "reservaMapperApplication")
 public abstract class ReservaMapper {
 
@@ -42,6 +45,7 @@ public abstract class ReservaMapper {
     @Mapping(source = "tipoReservaId", target = "tipoReserva", qualifiedByName = "mapTipoReservaIdToTipoReserva")
     public abstract Reserva toModel(ReservaRequestDTO requestDTO);
 
+    // No necesitas mappings para usuario y finca aquí, 'uses' se encargará de ello.
     @Mapping(source = "estadoReserva.nombre", target = "nombreEstado")
     @Mapping(source = "tipoReserva.nombre", target = "nombreTipoReserva")
     @Mapping(source = "usuario", target = "usuario")
@@ -52,7 +56,7 @@ public abstract class ReservaMapper {
     protected EstadoReserva mapEstadoIdToEstado(Long estadoId) {
         EstadoReserva estadoReserva = estadoReservaUseCases.obtenerEstadoReservaPorId(estadoId);
         if (estadoReserva == null) {
-            throw new EstadoReservaNoEncontradoException("Estado reserva con id " + estadoId + " no encontrada.");
+            throw new EstadoReservaNoEncontradoException("Estado reserva con id " + estadoId + " no encontrado.");
         }
         return estadoReserva;
     }
@@ -61,7 +65,7 @@ public abstract class ReservaMapper {
     protected Usuario mapUsuarioIdToUsuario(Long usuarioId) {
         Usuario usuario = usuarioUseCases.obtenerUsuarioPorId(usuarioId);
         if (usuario == null) {
-            throw new EntityNotFoundException("Usuario con id " + usuarioId + " no encontrado.");
+            throw new UsuarioNoEncontradoException("Usuario con id " + usuarioId + " no encontrado.");
         }
         return usuario;
     }

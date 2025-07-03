@@ -4,6 +4,12 @@ public class Servicio {
     private  Long id;
     private String nombre;
 
+    public Servicio(Long id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+    public Servicio(){}
+
     public Long getId() {
         return id;
     }

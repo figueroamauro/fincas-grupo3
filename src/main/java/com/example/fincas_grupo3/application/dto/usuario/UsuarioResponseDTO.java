@@ -13,13 +13,13 @@ public class UsuarioResponseDTO {
     private DireccionResponseDTO direccion;
     private Set<RolResponseDTO> roles;
 
-    public UsuarioResponseDTO(Long id, String nombre, String apellido, String correo, String telefono, DireccionResponseDTO direccionResponseDTO, Set<RolResponseDTO> roles) {
+    public UsuarioResponseDTO(Long id, String nombre, String apellido, String correo, String telefono, DireccionResponseDTO direccion, Set<RolResponseDTO> roles) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.telefono = telefono;
-        this.direccion = direccionResponseDTO;
+        this.direccion = direccion;
         this.roles = roles;
     }
 
