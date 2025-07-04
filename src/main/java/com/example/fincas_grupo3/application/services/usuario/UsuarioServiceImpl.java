@@ -5,10 +5,12 @@ import com.example.fincas_grupo3.application.dto.usuario.UsuarioResponseDTO;
 import com.example.fincas_grupo3.application.exceptions.UsuarioNoEncontradoException;
 import com.example.fincas_grupo3.application.mappers.usuario.UsuarioMapper;
 import com.example.fincas_grupo3.application.usecases.usuario.UsuarioUseCases;
+import com.example.fincas_grupo3.domain.models.rol.Rol;
 import com.example.fincas_grupo3.domain.models.usuario.Usuario;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,6 +28,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public UsuarioResponseDTO crearUsuario(UsuarioRequestDTO requestDTO) {
         Usuario usuarioModel = usuarioMapper.toModel(requestDTO);
+        usuarioModel.setRoles(new HashSet<>());
+        usuarioModel.getRoles().add(new Rol("CLIENTE", null));
         Usuario usuarioGuardado = usuarioUseCases.crearUsuario(usuarioModel);
         return usuarioMapper.toDTO(usuarioGuardado);
     }

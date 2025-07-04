@@ -27,7 +27,7 @@ public class UsuarioEntidad  {
     @JoinColumn(name = "direccion_id", referencedColumnName = "id", unique = true)
     private DireccionEntidad direccion;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "rol_usuarios",
             joinColumns = @JoinColumn(name = "usuario_id"),
