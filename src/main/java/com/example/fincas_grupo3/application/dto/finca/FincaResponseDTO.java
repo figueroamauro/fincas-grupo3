@@ -1,8 +1,11 @@
 package com.example.fincas_grupo3.application.dto.finca;
 
 import com.example.fincas_grupo3.application.dto.direccion.DireccionResponseDTO;
+import com.example.fincas_grupo3.application.dto.horario.HorarioDisponibleResponseDTO;
 import com.example.fincas_grupo3.application.dto.servicio.ServicioResponseDTO;
 import com.example.fincas_grupo3.application.dto.usuario.UsuarioResponseDTO;
+import com.example.fincas_grupo3.domain.models.horario.HorarioDisponible;
+
 import java.util.List;
 
 public class FincaResponseDTO {
@@ -14,6 +17,7 @@ public class FincaResponseDTO {
     private DireccionResponseDTO direccion;
     private UsuarioResponseDTO usuario;
     private List<ServicioResponseDTO> servicios;
+    private List<HorarioDisponibleResponseDTO> horarioDisponibleList;
 
 
     public FincaResponseDTO(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, DireccionResponseDTO direccion, UsuarioResponseDTO usuario, List<ServicioResponseDTO> servicios) {
@@ -42,5 +46,17 @@ public class FincaResponseDTO {
     public UsuarioResponseDTO getUsuario() { return usuario; }
     public void setUsuario(UsuarioResponseDTO usuario) { this.usuario = usuario; }
     public List<ServicioResponseDTO> getServicios() { return servicios; }
-    public void setServicios(List<ServicioResponseDTO> servicios) { this.servicios = servicios; }
+
+    public void setServicios(List<ServicioResponseDTO> servicios) {
+
+        this.servicios = servicios;
+    }
+
+    public List<HorarioDisponibleResponseDTO> getHorarioDisponibleList() {
+        return horarioDisponibleList;
+    }
+
+    public void setHorarioDisponibleList(List<HorarioDisponibleResponseDTO> horarioDisponibleList) {
+        this.horarioDisponibleList = horarioDisponibleList;
+    }
 }
