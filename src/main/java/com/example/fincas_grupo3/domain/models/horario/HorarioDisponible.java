@@ -2,6 +2,7 @@ package com.example.fincas_grupo3.domain.models.horario;
 
 import com.example.fincas_grupo3.domain.enums.DiaSemana;
 import com.example.fincas_grupo3.domain.exceptions.HorarioCruzadoException;
+import com.example.fincas_grupo3.domain.models.finca.Finca;
 
 import java.time.LocalTime;
 
@@ -10,13 +11,15 @@ public class HorarioDisponible {
     private DiaSemana diaSemana;
     private LocalTime horaInicio;
     private LocalTime horaFin;
+    private Finca finca;
 
-    public HorarioDisponible(Long id, DiaSemana diaSemana, LocalTime horaInicio, LocalTime horaFin) {
+    public HorarioDisponible(Long id, DiaSemana diaSemana, LocalTime horaInicio, LocalTime horaFin,Finca finca) {
         validarHorarios(horaInicio, horaFin);
         this.id = id;
         this.diaSemana = diaSemana;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
+        this.finca = finca;
     }
 
     public boolean seSolapaCon(HorarioDisponible otroHorario) {
@@ -65,5 +68,13 @@ public class HorarioDisponible {
 
     public void setHoraFin(LocalTime horaFin) {
         this.horaFin = horaFin;
+    }
+
+    public Finca getFinca() {
+        return finca;
+    }
+
+    public void setFinca(Finca finca) {
+        this.finca = finca;
     }
 }

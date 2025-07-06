@@ -8,11 +8,13 @@ public class HorarioDisponibleRequestDTO {
     private DiaSemana diaSemana;
     private LocalTime horaInicio;
     private LocalTime horaFin;
+    private Long fincaId;
 
-    public HorarioDisponibleRequestDTO(DiaSemana diaSemana, LocalTime horaInicio, LocalTime horaFin) {
+    public HorarioDisponibleRequestDTO(DiaSemana diaSemana, LocalTime horaInicio, LocalTime horaFin,Long fincaId) {
         this.diaSemana = diaSemana;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
+        this.fincaId = fincaId;
     }
 
     public DiaSemana getDiaSemana() {
@@ -37,5 +39,13 @@ public class HorarioDisponibleRequestDTO {
 
     public void setHoraFin(LocalTime horaFin) {
         this.horaFin = horaFin;
+    }
+
+    public Long getFincaId() {
+        return fincaId;
+    }
+
+    public void setFincaId(Long fincaId) {
+        this.fincaId = fincaId;
     }
 }

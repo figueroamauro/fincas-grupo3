@@ -1,6 +1,8 @@
 package com.example.fincas_grupo3.infrastructure.entities.horario;
 
 import com.example.fincas_grupo3.domain.enums.DiaSemana;
+import com.example.fincas_grupo3.domain.models.finca.Finca;
+import com.example.fincas_grupo3.infrastructure.entities.finca.FincaEntidad;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -23,14 +25,19 @@ public class HorarioDisponibleEntidad {
     @Column(name = "hora_fin", nullable = false)
     private LocalTime horaFin;
 
+    @ManyToOne
+    @JoinColumn(name = "finca_id")
+    private FincaEntidad finca;
+
     public HorarioDisponibleEntidad() {
     }
 
-    public HorarioDisponibleEntidad(Long id, DiaSemana diaSemana, LocalTime horaInicio, LocalTime horaFin) {
+    public HorarioDisponibleEntidad(Long id, DiaSemana diaSemana, LocalTime horaInicio, LocalTime horaFin,FincaEntidad finca) {
         this.id = id;
         this.diaSemana = diaSemana;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
+        this.finca = finca;
     }
 
 
@@ -64,5 +71,13 @@ public class HorarioDisponibleEntidad {
 
     public void setHoraFin(LocalTime horaFin) {
         this.horaFin = horaFin;
+    }
+
+    public FincaEntidad getFinca() {
+        return finca;
+    }
+
+    public void setFinca(FincaEntidad finca) {
+        this.finca = finca;
     }
 }

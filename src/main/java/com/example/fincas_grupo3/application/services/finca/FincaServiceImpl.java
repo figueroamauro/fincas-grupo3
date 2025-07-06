@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,7 +58,7 @@ public class FincaServiceImpl implements FincaService {
 
 
         if (dto.getServicioIds() != null && !dto.getServicioIds().isEmpty()) {
-            List<Servicio> serviciosCompletos = dto.getServicioIds().stream()
+            Set<Servicio> serviciosCompletos = dto.getServicioIds().stream()
                     .map(id -> {
                         Servicio servicio = serviciosUseCases.obtenerServicioPorId(id);
                         if (servicio == null) {
@@ -65,10 +66,10 @@ public class FincaServiceImpl implements FincaService {
                         }
                         return servicio;
                     })
-                    .collect(Collectors.toList());
+                    .collect(Collectors.toSet());
             model.setServicios(serviciosCompletos);
         } else {
-            model.setServicios(Collections.emptyList());
+            model.setServicios(Collections.emptySet());
         }
 
         Finca fincaGuardada = fincaUseCases.crearFinca(model);
@@ -100,7 +101,7 @@ public class FincaServiceImpl implements FincaService {
 
 
         if (dto.getServicioIds() != null && !dto.getServicioIds().isEmpty()) {
-            List<Servicio> serviciosCompletos = dto.getServicioIds().stream()
+            Set<Servicio> serviciosCompletos = dto.getServicioIds().stream()
                     .map(id -> {
                         Servicio servicio = serviciosUseCases.obtenerServicioPorId(id);
                         if (servicio == null) {
@@ -108,10 +109,10 @@ public class FincaServiceImpl implements FincaService {
                         }
                         return servicio;
                     })
-                    .collect(Collectors.toList());
+                    .collect(Collectors.toSet());
             model.setServicios(serviciosCompletos);
         } else {
-            model.setServicios(Collections.emptyList());
+            model.setServicios(Collections.emptySet());
         }
 
         Finca fincaActualizada = fincaUseCases.actualizarFinca(model);

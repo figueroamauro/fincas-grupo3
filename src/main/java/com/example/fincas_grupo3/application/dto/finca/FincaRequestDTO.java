@@ -1,6 +1,7 @@
 package com.example.fincas_grupo3.application.dto.finca;
 
 import java.util.List;
+import java.util.Set;
 
 public class FincaRequestDTO {
     private Long id;
@@ -10,10 +11,10 @@ public class FincaRequestDTO {
     private Double tarifaDia;
     private Long direccionId;
     private Long usuarioId;
-    private List<Long> servicioIds;
+    private Set<Long> servicioIds;
 
 
-    public FincaRequestDTO(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, Long direccionId, Long usuarioId, List<Long> servicioIds) {
+    public FincaRequestDTO(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, Long direccionId, Long usuarioId, Set<Long> servicioIds) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -38,6 +39,6 @@ public class FincaRequestDTO {
     public void setDireccionId(Long direccionId) { this.direccionId = direccionId; }
     public Long getUsuarioId() { return usuarioId; }
     public void setUsuarioId(Long usuarioId) { this.usuarioId = usuarioId; }
-    public List<Long> getServicioIds() { return servicioIds; }
-    public void setServicioIds(List<Long> servicioIds) { this.servicioIds = servicioIds; }
+    public Set<Long> getServicioIds() { return servicioIds; }
+    public void setServicioIds(Set<Long> servicioIds) { this.servicioIds = servicioIds; }
 }

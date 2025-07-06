@@ -1,9 +1,13 @@
 package com.example.fincas_grupo3.infrastructure.entities.finca;
 
 import com.example.fincas_grupo3.infrastructure.entities.direccion.DireccionEntidad;
+import com.example.fincas_grupo3.infrastructure.entities.horario.HorarioDisponibleEntidad;
 import com.example.fincas_grupo3.infrastructure.entities.servicio.ServicioEntidad;
 import com.example.fincas_grupo3.infrastructure.entities.usuario.UsuarioEntidad;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -43,8 +47,14 @@ public class FincaEntidad {
     )
     private Set<ServicioEntidad> servicios = new HashSet<>();
 
+    @OneToMany(mappedBy = "finca")
+    private List<HorarioDisponibleEntidad> horarioDisponibleEntidadList;
 
-    public FincaEntidad() {}
+
+    public FincaEntidad() {
+        this.servicios = new HashSet<>();
+        this.horarioDisponibleEntidadList = new ArrayList<>();
+    }
 
     public FincaEntidad(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, DireccionEntidad direccion, UsuarioEntidad usuario, Set<ServicioEntidad> servicios) {
         this.id = id;
