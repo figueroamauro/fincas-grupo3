@@ -188,6 +188,19 @@ BEGIN
 );
 END;
 
+--FINCA_TIPO_RESERVA
+IF NOT EXISTS (
+    SELECT * FROM INFORMATION_SCHEMA.TABLES
+    WHERE TABLE_NAME = 'finca_tipo_reserva' AND TABLE_TYPE = 'BASE TABLE'
+)
+BEGIN
+	CREATE TABLE  finca_tipo_reserva(
+	finca_id BIGINT NOT NULL,
+	tipos_reserva_id BIGINT NOT NULL,
+	PRIMARY KEY(finca_id, tipos_reserva_id)
+);
+END;
+
 
 --ESTADOS_RESERVA
 IF NOT EXISTS (
@@ -211,20 +224,6 @@ BEGIN
 CREATE TABLE historial_reservas (
     id BIGINT PRIMARY KEY IDENTITY(1,1),
     fecha DATETIME NOT NULL,
-);
-END;
-
-
---FINCA_TIPO
-IF NOT EXISTS (
-    SELECT * FROM INFORMATION_SCHEMA.TABLES
-    WHERE TABLE_NAME = 'finca_tipo' AND TABLE_TYPE = 'BASE TABLE'
-)
-BEGIN
-	CREATE TABLE  finca_tipo(
-	finca_id BIGINT NOT NULL,
-	tipo_reserva_id BIGINT NOT NULL,
-	PRIMARY KEY(tipo_reserva_id, finca_id)
 );
 END;
 
@@ -587,19 +586,19 @@ BEGIN
 END;
 
 
---FINCA_TIPO -> TIPOS_RESERVA, FINCAS
+--FINCA_TIPO_RESERVA -> TIPOS_RESERVA, FINCAS
 IF NOT EXISTS (
     SELECT * FROM sys.foreign_keys
-    WHERE NAME = 'fk_finca_tipo_tipo_reserva'
-    OR NAME = 'fk_finca_tipo_finca'
+    WHERE NAME = 'fk_finca_tipo_reserva_finca'
+    OR NAME = 'fk_finca_tipo_reserva_tipo_reserva'
 )
 BEGIN
-    ALTER TABLE finca_tipo
-    ADD CONSTRAINT fk_finca_tipo_tipo_reserva
-    FOREIGN KEY (tipo_reserva_id)
+    ALTER TABLE finca_tipo_reserva
+    ADD CONSTRAINT fk_finca_tipo_reserva_finca
+    FOREIGN KEY (tipos_reserva_id)
     REFERENCES tipos_reserva(id),
 
-    CONSTRAINT fk_finca_tipo_finca
+    CONSTRAINT fk_finca_tipo_reserva_tipo_reserva
     FOREIGN KEY (finca_id)
     REFERENCES fincas(id);
 END;
@@ -837,3 +836,111 @@ IF NOT EXISTS (
 )
 CREATE NONCLUSTERED INDEX idx_pagos_estado
 ON pagos(estado_id);
+
+
+
+-- VALORES POR DEFECTO
+
+INSERT INTO tipos_reserva(nombre) VALUES
+('POR_HORA'),
+('POR_DIA');
+
+
+INSERT INTO roles(nombre) VALUES
+('ADMIN'),
+('PROPIETARIO'),
+('CLIENTE');
+
+
+INSERT INTO tipos_facturas (nombre)
+VALUES
+    ('Factura A'),
+    ('Factura B'),
+    ('Factura C'),
+    ('Nota de Crédito A'),
+    ('Nota de Crédito B'),
+    ('Nota de Crédito C');
+
+
+INSERT INTO servicios (nombre)
+VALUES
+    ('Pileta'),
+    ('Parrilla'),
+    ('Internet'),
+    ('TV por cable'),
+    ('Aire acondicionado'),
+    ('Cochera'),
+    ('Agua caliente'),
+    ('Ropa de cama'),
+    ('Toallas'),
+    ('Cocina equipada'),
+    ('Heladera'),
+    ('Microondas'),
+    ('Calefacción'),
+    ('Jardín'),
+    ('Espacio para fogón'),
+    ('Hamacas'),
+    ('Mesa de ping pong'),
+    ('Juegos de mesa'),
+    ('Terraza'),
+    ('Wi-Fi');
+
+
+INSERT INTO estados_pago (nombre)
+VALUES
+    ('Pendiente'),
+    ('Pagado'),
+    ('Rechazado'),
+    ('Cancelado'),
+    ('Vencido'),
+    ('Reembolsado');
+
+
+INSERT INTO estados_reserva (nombre)
+VALUES
+    ('Pendiente'),
+    ('Confirmada'),
+    ('Cancelada'),
+    ('Rechazada'),
+    ('Finalizada'),
+    ('No asistió');
+
+
+INSERT INTO estados_publicacion (nombre)
+VALUES
+    ('Borrador'),
+    ('Publicada'),
+    ('Pausada'),
+    ('Finalizada'),
+    ('Eliminada');
+
+
+INSERT INTO provincias (nombre)
+VALUES
+    ('Buenos Aires'),
+    ('Catamarca'),
+    ('Chaco'),
+    ('Chubut'),
+    ('Córdoba'),
+    ('Corrientes'),
+    ('Entre Ríos'),
+    ('Formosa'),
+    ('Jujuy'),
+    ('La Pampa'),
+    ('La Rioja'),
+    ('Mendoza'),
+    ('Misiones'),
+    ('Neuquén'),
+    ('Río Negro'),
+    ('Salta'),
+    ('San Juan'),
+    ('San Luis'),
+    ('Santa Cruz'),
+    ('Santa Fe'),
+    ('Santiago del Estero'),
+    ('Tierra del Fuego'),
+    ('Tucumán'),
+    ('Ciudad Autónoma de Buenos Aires');
+
+
+

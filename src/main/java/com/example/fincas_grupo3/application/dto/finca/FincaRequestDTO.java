@@ -12,6 +12,7 @@ public class FincaRequestDTO {
     private Long direccionId;
     private Long usuarioId;
     private Set<Long> servicioIds;
+    private Set<Long> tipoReservaIds;
 
 
     public FincaRequestDTO(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, Long direccionId, Long usuarioId, Set<Long> servicioIds) {
@@ -40,5 +41,16 @@ public class FincaRequestDTO {
     public Long getUsuarioId() { return usuarioId; }
     public void setUsuarioId(Long usuarioId) { this.usuarioId = usuarioId; }
     public Set<Long> getServicioIds() { return servicioIds; }
-    public void setServicioIds(Set<Long> servicioIds) { this.servicioIds = servicioIds; }
+
+    public void setServicioIds(Set<Long> servicioIds) {
+        this.servicioIds = servicioIds;
+    }
+
+    public Set<Long> getTipoReservaIds() {
+        return tipoReservaIds;
+    }
+
+    public void setTipoReservaIds(Set<Long> tipoReservaIds) {
+        this.tipoReservaIds = tipoReservaIds;
+    }
 }

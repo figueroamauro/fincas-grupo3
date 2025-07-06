@@ -5,7 +5,10 @@ import com.example.fincas_grupo3.application.dto.horario.HorarioDisponibleRespon
 import com.example.fincas_grupo3.application.dto.servicio.ServicioResponseDTO;
 import com.example.fincas_grupo3.application.dto.usuario.UsuarioResponseDTO;
 import com.example.fincas_grupo3.domain.models.horario.HorarioDisponible;
+import com.example.fincas_grupo3.domain.models.tiporeserva.TipoReserva;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class FincaResponseDTO {
@@ -18,7 +21,14 @@ public class FincaResponseDTO {
     private UsuarioResponseDTO usuario;
     private List<ServicioResponseDTO> servicios;
     private List<HorarioDisponibleResponseDTO> horarioDisponibleList;
+    private List<TipoReserva> tipoReservas;
 
+
+    public FincaResponseDTO() {
+        this.servicios = new ArrayList<>();
+        this.horarioDisponibleList = new ArrayList<>();
+        this.tipoReservas = new ArrayList<>();
+    }
 
     public FincaResponseDTO(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, DireccionResponseDTO direccion, UsuarioResponseDTO usuario, List<ServicioResponseDTO> servicios) {
         this.id = id;
@@ -58,5 +68,13 @@ public class FincaResponseDTO {
 
     public void setHorarioDisponibleList(List<HorarioDisponibleResponseDTO> horarioDisponibleList) {
         this.horarioDisponibleList = horarioDisponibleList;
+    }
+
+    public List<TipoReserva> getTipoReservas() {
+        return tipoReservas;
+    }
+
+    public void setTipoReservas(List<TipoReserva> tipoReservas) {
+        this.tipoReservas = tipoReservas;
     }
 }

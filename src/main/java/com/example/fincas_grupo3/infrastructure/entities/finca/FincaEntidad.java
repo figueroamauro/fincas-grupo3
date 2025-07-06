@@ -1,8 +1,10 @@
 package com.example.fincas_grupo3.infrastructure.entities.finca;
 
+import com.example.fincas_grupo3.domain.models.tiporeserva.TipoReserva;
 import com.example.fincas_grupo3.infrastructure.entities.direccion.DireccionEntidad;
 import com.example.fincas_grupo3.infrastructure.entities.horario.HorarioDisponibleEntidad;
 import com.example.fincas_grupo3.infrastructure.entities.servicio.ServicioEntidad;
+import com.example.fincas_grupo3.infrastructure.entities.tiporeserva.TipoReservaEntidad;
 import com.example.fincas_grupo3.infrastructure.entities.usuario.UsuarioEntidad;
 import jakarta.persistence.*;
 
@@ -50,10 +52,17 @@ public class FincaEntidad {
     @OneToMany(mappedBy = "finca")
     private List<HorarioDisponibleEntidad> horarioDisponibleEntidadList;
 
+    @ManyToMany
+    @JoinTable(name = "finca_tipo_reserva",
+            joinColumns = @JoinColumn(name = "finca_id"),
+            inverseJoinColumns = @JoinColumn(name = "tipos_reserva_id"))
+    private List<TipoReservaEntidad> tipoReservas;
+
 
     public FincaEntidad() {
         this.servicios = new HashSet<>();
         this.horarioDisponibleEntidadList = new ArrayList<>();
+        this.tipoReservas = new ArrayList<>();
     }
 
     public FincaEntidad(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, DireccionEntidad direccion, UsuarioEntidad usuario, Set<ServicioEntidad> servicios) {
@@ -84,4 +93,20 @@ public class FincaEntidad {
     public void setUsuario(UsuarioEntidad usuario) { this.usuario = usuario; }
     public Set<ServicioEntidad> getServicios() { return servicios; }
     public void setServicios(Set<ServicioEntidad> servicios) { this.servicios = servicios; }
+
+    public List<HorarioDisponibleEntidad> getHorarioDisponibleEntidadList() {
+        return horarioDisponibleEntidadList;
+    }
+
+    public void setHorarioDisponibleEntidadList(List<HorarioDisponibleEntidad> horarioDisponibleEntidadList) {
+        this.horarioDisponibleEntidadList = horarioDisponibleEntidadList;
+    }
+
+    public List<TipoReservaEntidad> getTipoReservas() {
+        return tipoReservas;
+    }
+
+    public void setTipoReservas(List<TipoReservaEntidad> tipoReservas) {
+        this.tipoReservas = tipoReservas;
+    }
 }

@@ -9,6 +9,10 @@ public class TipoReserva {
         this.nombre = nombre;
     }
 
+    public TipoReserva() {
+
+    }
+
 
     public Long getId() {
         return id;
