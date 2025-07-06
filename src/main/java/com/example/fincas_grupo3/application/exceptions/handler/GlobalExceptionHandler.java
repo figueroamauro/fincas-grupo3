@@ -2,6 +2,7 @@ package com.example.fincas_grupo3.application.exceptions.handler;
 
 import com.example.fincas_grupo3.application.exceptions.CorreoYaRegistradoException;
 import com.example.fincas_grupo3.application.exceptions.ObjectNotFoundException;
+import com.example.fincas_grupo3.domain.exceptions.HorarioCruzadoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,7 +23,8 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler({CorreoYaRegistradoException.class,
-    IllegalArgumentException.class})
+    IllegalArgumentException.class
+    , HorarioCruzadoException.class})
     public ResponseEntity<Map<String,String>> handlerBadRequest(Exception e) {
         Map<String, String> error = new HashMap<>();
 

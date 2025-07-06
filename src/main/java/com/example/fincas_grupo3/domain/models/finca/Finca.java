@@ -3,7 +3,11 @@ package com.example.fincas_grupo3.domain.models.finca;
 import com.example.fincas_grupo3.domain.models.direccion.Direccion;
 import com.example.fincas_grupo3.domain.models.horario.HorarioDisponible;
 import com.example.fincas_grupo3.domain.models.servicio.Servicio;
+import com.example.fincas_grupo3.domain.models.tiporeserva.TipoReserva;
 import com.example.fincas_grupo3.domain.models.usuario.Usuario;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -17,6 +21,13 @@ public class Finca {
     private Usuario usuario;
     private Set<Servicio> servicios;
     private List<HorarioDisponible> horarioDisponibleList;
+    private Set<TipoReserva> tipoReservas;
+
+    public Finca() {
+        this.servicios = new HashSet<>();
+        this.horarioDisponibleList = new ArrayList<>();
+        this.tipoReservas = new HashSet<>();
+    }
 
     public Finca(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, Direccion direccion, Usuario usuario, Set<Servicio> servicios) {
         this.id = id;
@@ -53,5 +64,13 @@ public class Finca {
 
     public void setHorarioDisponibleList(List<HorarioDisponible> horarioDisponibleList) {
         this.horarioDisponibleList = horarioDisponibleList;
+    }
+
+    public Set<TipoReserva> getTipoReservas() {
+        return tipoReservas;
+    }
+
+    public void setTipoReservas(Set<TipoReserva> tipoReservas) {
+        this.tipoReservas = tipoReservas;
     }
 }

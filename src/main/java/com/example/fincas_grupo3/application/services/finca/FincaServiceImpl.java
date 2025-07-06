@@ -10,14 +10,17 @@ import com.example.fincas_grupo3.application.mappers.finca.FincaMapper;
 import com.example.fincas_grupo3.application.usecases.direccion.DireccionUseCases;
 import com.example.fincas_grupo3.application.usecases.finca.FincaUseCases;
 import com.example.fincas_grupo3.application.usecases.servicio.ServiciosUseCases;
+import com.example.fincas_grupo3.application.usecases.tiporeserva.TipoReservaUseCases;
 import com.example.fincas_grupo3.application.usecases.usuario.UsuarioUseCases;
 import com.example.fincas_grupo3.domain.models.direccion.Direccion;
 import com.example.fincas_grupo3.domain.models.finca.Finca;
 import com.example.fincas_grupo3.domain.models.servicio.Servicio;
+import com.example.fincas_grupo3.domain.models.tiporeserva.TipoReserva;
 import com.example.fincas_grupo3.domain.models.usuario.Usuario;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -29,13 +32,15 @@ public class FincaServiceImpl implements FincaService {
     private final DireccionUseCases direccionUseCases;
     private final UsuarioUseCases usuarioUseCases;
     private final ServiciosUseCases serviciosUseCases;
+    private final TipoReservaUseCases tipoReservaUseCases;
 
-    public FincaServiceImpl(FincaMapper fincaMapper, FincaUseCases fincaUseCases, DireccionUseCases direccionUseCases, UsuarioUseCases usuarioUseCases, ServiciosUseCases serviciosUseCases) {
+    public FincaServiceImpl(FincaMapper fincaMapper, FincaUseCases fincaUseCases, DireccionUseCases direccionUseCases, UsuarioUseCases usuarioUseCases, ServiciosUseCases serviciosUseCases, TipoReservaUseCases tipoReservaUseCases) {
         this.fincaMapper = fincaMapper;
         this.fincaUseCases = fincaUseCases;
         this.direccionUseCases = direccionUseCases;
         this.usuarioUseCases = usuarioUseCases;
         this.serviciosUseCases = serviciosUseCases;
+        this.tipoReservaUseCases = tipoReservaUseCases;
     }
 
     @Override
@@ -53,8 +58,14 @@ public class FincaServiceImpl implements FincaService {
             throw new UsuarioNoEncontradoException("El usuario con id " + dto.getUsuarioId() + " no fue encontrado.");
         }
 
+
         model.setDireccion(direccionCompleta);
         model.setUsuario(usuarioCompleto);
+        if (model.getTipoReservas().isEmpty()) {
+            model.setTipoReservas(new HashSet<>());
+            TipoReserva tipoReserva = tipoReservaUseCases.obtenerTipoReservaPorId(1L);
+            model.getTipoReservas().add(tipoReserva);
+        }
 
 
         if (dto.getServicioIds() != null && !dto.getServicioIds().isEmpty()) {
