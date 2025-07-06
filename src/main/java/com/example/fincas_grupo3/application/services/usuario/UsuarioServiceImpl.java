@@ -2,6 +2,7 @@ package com.example.fincas_grupo3.application.services.usuario;
 
 import com.example.fincas_grupo3.application.dto.usuario.UsuarioRequestDTO;
 import com.example.fincas_grupo3.application.dto.usuario.UsuarioResponseDTO;
+import com.example.fincas_grupo3.application.exceptions.CorreoYaRegistradoException;
 import com.example.fincas_grupo3.application.exceptions.UsuarioNoEncontradoException;
 import com.example.fincas_grupo3.application.mappers.usuario.UsuarioMapper;
 import com.example.fincas_grupo3.application.usecases.rol.RolUseCases;
@@ -33,17 +34,9 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Transactional
     public UsuarioResponseDTO crearUsuario(UsuarioRequestDTO requestDTO) {
         Usuario usuarioModel = usuarioMapper.toModel(requestDTO);
-        Rol rol = rolUseCases.obtenerRol("CLIENTE");
-        if (usuarioModel.getRoles().isEmpty()) {
-            usuarioModel.setRoles(new HashSet<>());
-            if (rol != null) {
-                usuarioModel.getRoles().add(rol);
+        validarCorreoYaRegistrado(usuarioModel.getCorreo());
 
-            }else {
-                Rol newRol = rolUseCases.crearRol(new Rol("CLIENTE", null));
-                usuarioModel.getRoles().add(newRol);
-            }
-        }
+        agregarRolPorDefecto(usuarioModel);
         Usuario usuarioGuardado = usuarioUseCases.crearUsuario(usuarioModel);
         return usuarioMapper.toDTO(usuarioGuardado);
     }
@@ -93,5 +86,27 @@ public class UsuarioServiceImpl implements UsuarioService {
             throw new UsuarioNoEncontradoException("Usuario no encontrado");
         }
         return usuarioUseCases.eliminarUsuarioPorId(id);
+    }
+
+
+    private void agregarRolPorDefecto(Usuario usuarioModel) {
+        Rol rol = rolUseCases.obtenerRol("CLIENTE");
+        if (usuarioModel.getRoles().isEmpty()) {
+            usuarioModel.setRoles(new HashSet<>());
+            if (rol != null) {
+                usuarioModel.getRoles().add(rol);
+
+            }else {
+                Rol newRol = rolUseCases.crearRol(new Rol("CLIENTE", null));
+                usuarioModel.getRoles().add(newRol);
+            }
+        }
+    }
+
+    private  void validarCorreoYaRegistrado(String correo) {
+        Usuario usuario = usuarioUseCases.obtenerUsuarioPorCorreo(correo);
+        if (usuario != null) {
+            throw new CorreoYaRegistradoException("Correo ya registrado");
+        }
     }
 }

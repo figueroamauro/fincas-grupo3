@@ -14,6 +14,8 @@ public interface UsuarioOutPort {
 
     Usuario obtenerUsuarioPorId(Long id);
 
+    Usuario obtenerUsuarioPorCorreo(String correo);
+
     Boolean eliminarUsuario(Usuario usuario);
 
     Boolean eliminarUsuarioPorId(Long id);
