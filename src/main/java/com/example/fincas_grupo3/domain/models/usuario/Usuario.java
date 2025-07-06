@@ -3,6 +3,7 @@ package com.example.fincas_grupo3.domain.models.usuario;
 import com.example.fincas_grupo3.domain.models.direccion.Direccion;
 import com.example.fincas_grupo3.domain.models.rol.Rol;
 
+import java.util.HashSet;
 import java.util.Set; // Importar Set
 
 public class Usuario {
@@ -14,6 +15,10 @@ public class Usuario {
     private String telefono;
     private Direccion direccion;
     private Set<Rol> roles;
+
+    public Usuario() {
+        roles = new HashSet<>();
+    }
 
     public Usuario(Long id, String nombre, String apellido, String correo, String contraseña, String telefono, Direccion direccion, Set<Rol> roles) {
         this.id = id;

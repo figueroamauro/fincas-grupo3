@@ -3,6 +3,8 @@ package com.example.fincas_grupo3.infrastructure.entities.usuario;
 import com.example.fincas_grupo3.infrastructure.entities.direccion.DireccionEntidad;
 import com.example.fincas_grupo3.infrastructure.entities.rol.RolEntidad;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -27,7 +29,7 @@ public class UsuarioEntidad  {
     @JoinColumn(name = "direccion_id", referencedColumnName = "id", unique = true)
     private DireccionEntidad direccion;
 
-    @ManyToMany
+    @ManyToMany()
     @JoinTable(
             name = "rol_usuarios",
             joinColumns = @JoinColumn(name = "usuario_id"),
@@ -36,6 +38,7 @@ public class UsuarioEntidad  {
     private Set<RolEntidad> roles;
 
     public UsuarioEntidad() {
+        this.roles = new HashSet<>();
     }
 
     public UsuarioEntidad(Long id, String nombre, String apellido, String correo, String contraseña, String telefono, DireccionEntidad direccion, Set<RolEntidad> roles) {
