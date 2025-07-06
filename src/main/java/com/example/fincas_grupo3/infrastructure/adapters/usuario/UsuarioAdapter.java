@@ -55,6 +55,12 @@ public class UsuarioAdapter implements UsuarioOutPort {
     }
 
     @Override
+    public Usuario obtenerUsuarioPorCorreo(String correo) {
+        UsuarioEntidad usuarioEncontrado = jpaUsuarioRepository.findByCorreo(correo);
+        return usuarioMapper.toModel(usuarioEncontrado);
+    }
+
+    @Override
     public Boolean eliminarUsuario(Usuario usuario) {
         Optional<UsuarioEntidad> usuarioEncontrado = jpaUsuarioRepository.findById(usuario.getId());
         if (usuarioEncontrado.isPresent()) {

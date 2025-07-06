@@ -50,4 +50,9 @@ public class UsuarioUseCases  implements UsuarioInPort {
     public Usuario obtenerUsuarioPorId(Long id) {
         return obtenerUsuarioUseCase.obtenerUsuarioPorId(id);
     }
+
+    @Override
+    public Usuario obtenerUsuarioPorCorreo(String correo) {
+        return obtenerUsuarioUseCase.obtenerUsuarioPorCorreo(correo);
+    }
 }

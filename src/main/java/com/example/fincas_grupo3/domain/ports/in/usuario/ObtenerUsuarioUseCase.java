@@ -11,4 +11,6 @@ public interface ObtenerUsuarioUseCase {
 
     Usuario obtenerUsuarioPorId(Long id);
 
+    Usuario obtenerUsuarioPorCorreo(String correo);
+
 }

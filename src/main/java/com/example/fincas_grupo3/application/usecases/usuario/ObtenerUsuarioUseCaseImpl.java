@@ -24,4 +24,9 @@ public class ObtenerUsuarioUseCaseImpl implements ObtenerUsuarioUseCase {
     public Usuario obtenerUsuarioPorId(Long id) {
         return usuarioOutPort.obtenerUsuarioPorId(id);
     }
+
+    @Override
+    public Usuario obtenerUsuarioPorCorreo(String correo) {
+        return usuarioOutPort.obtenerUsuarioPorCorreo(correo);
+    }
 }
