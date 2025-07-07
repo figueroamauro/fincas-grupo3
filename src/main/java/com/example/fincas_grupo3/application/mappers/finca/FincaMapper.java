@@ -57,8 +57,7 @@ public abstract class FincaMapper {
 
     @Named("mapToHorarioDisponibleList")
     public List<HorarioDisponibleResponseDTO> mapToHorarioDisponibleList(List<HorarioDisponible> list) {
-
-        return horarioDisponibleUseCases.obtenerHorariosDisponibles().stream().map(horarioDisponibleMapper::toDTO).toList();
+       return list.stream().map(horarioDisponibleMapper::toDTO).toList();
     }
 
     @Named("mapTipoReservaIdsToTipoReserva")

@@ -49,7 +49,7 @@ public class FincaEntidad {
     )
     private Set<ServicioEntidad> servicios = new HashSet<>();
 
-    @OneToMany(mappedBy = "finca")
+    @OneToMany(mappedBy = "finca",fetch = FetchType.EAGER)
     private List<HorarioDisponibleEntidad> horarioDisponibleEntidadList;
 
     @ManyToMany

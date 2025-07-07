@@ -23,6 +23,7 @@ public class HorarioDisponibleServiceImpl implements HorarioDisponibleService {
     @Override
     public HorarioDisponibleResponseDTO guardar(HorarioDisponibleRequestDTO dto) {
         HorarioDisponible model = horarioDisponibleMapper.toModel(dto);
+        model.getFinca().agregarHorario(model);
         HorarioDisponible horarioGuardado = horarioDisponibleUseCases.crearHorarioDisponible(model);
         return horarioDisponibleMapper.toDTO(horarioGuardado);
     }

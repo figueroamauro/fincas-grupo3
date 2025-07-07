@@ -8,4 +8,5 @@ public interface ObtenerHorarioDisponibleUseCase {
     List<HorarioDisponible> obtenerHorariosDisponibles();
 
     HorarioDisponible obtenerHorarioDisponiblePorId(Long id);
+
 }

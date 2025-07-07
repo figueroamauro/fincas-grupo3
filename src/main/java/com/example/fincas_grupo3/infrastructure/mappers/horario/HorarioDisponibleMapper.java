@@ -8,8 +8,9 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring", implementationName = "horarioMapperInfra")
 public abstract class HorarioDisponibleMapper {
 
-    @Mapping(source = "finca", target = "finca")
+    @Mapping(target = "finca", ignore = true)
     public abstract HorarioDisponible toModel(HorarioDisponibleEntidad entidad);
 
+    @Mapping(source = "finca", target = "finca")
     public abstract HorarioDisponibleEntidad toEntidad(HorarioDisponible modelo);
 }
