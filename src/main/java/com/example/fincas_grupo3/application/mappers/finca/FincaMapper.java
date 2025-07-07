@@ -2,14 +2,17 @@ package com.example.fincas_grupo3.application.mappers.finca;
 
 import com.example.fincas_grupo3.application.dto.finca.FincaRequestDTO;
 import com.example.fincas_grupo3.application.dto.finca.FincaResponseDTO;
+import com.example.fincas_grupo3.application.dto.foto.FotoResponseDTO;
 import com.example.fincas_grupo3.application.dto.horario.HorarioDisponibleResponseDTO;
 import com.example.fincas_grupo3.application.mappers.direccion.DireccionMapper;
+import com.example.fincas_grupo3.application.mappers.foto.FotoMapper;
 import com.example.fincas_grupo3.application.mappers.horario.HorarioDisponibleMapper;
 import com.example.fincas_grupo3.application.mappers.servicio.ServicioMapper;
 import com.example.fincas_grupo3.application.mappers.tiporeserva.TipoReservaMapper;
 import com.example.fincas_grupo3.application.mappers.usuario.UsuarioMapper;
 import com.example.fincas_grupo3.application.usecases.horario.HorarioDisponibleUseCases;
 import com.example.fincas_grupo3.domain.models.finca.Finca;
+import com.example.fincas_grupo3.domain.models.foto.Foto;
 import com.example.fincas_grupo3.domain.models.horario.HorarioDisponible;
 import com.example.fincas_grupo3.domain.models.servicio.Servicio;
 import com.example.fincas_grupo3.domain.models.tiporeserva.TipoReserva;
@@ -26,12 +29,14 @@ import java.util.stream.Collectors;
 
 @Primary
 @Mapper(componentModel = "spring",
-        uses = {DireccionMapper.class, UsuarioMapper.class, ServicioMapper.class, HorarioDisponibleMapper.class, TipoReservaMapper.class})
+        uses = {DireccionMapper.class, UsuarioMapper.class, ServicioMapper.class, HorarioDisponibleMapper.class, TipoReservaMapper.class, FotoMapper.class})
 public abstract class FincaMapper {
     @Autowired
     private HorarioDisponibleUseCases horarioDisponibleUseCases;
     @Autowired
     private HorarioDisponibleMapper horarioDisponibleMapper;
+    @Autowired
+    private FotoMapper fotoMapper;
 
     @Mapping(source = "direccionId", target = "direccion.id")
     @Mapping(source = "usuarioId", target = "usuario.id")
@@ -53,12 +58,12 @@ public abstract class FincaMapper {
     }
 
     @Mapping(source = "horarioDisponibleList", target = "horarioDisponibleList", qualifiedByName = "mapToHorarioDisponibleList")
+    @Mapping(source = "fotos", target = "fotos",qualifiedByName = "mapToFotosDTO")
     public abstract FincaResponseDTO toDTO(Finca finca);
 
     @Named("mapToHorarioDisponibleList")
     public List<HorarioDisponibleResponseDTO> mapToHorarioDisponibleList(List<HorarioDisponible> list) {
-
-        return horarioDisponibleUseCases.obtenerHorariosDisponibles().stream().map(horarioDisponibleMapper::toDTO).toList();
+        return list.stream().map(horarioDisponibleMapper::toDTO).toList();
     }
 
     @Named("mapTipoReservaIdsToTipoReserva")
@@ -72,5 +77,10 @@ public abstract class FincaMapper {
                     tipoReserva.setId(id);
                     return tipoReserva;
                 }).collect(Collectors.toSet());
+    }
+
+    @Named("mapToFotosDTO")
+    public List<FotoResponseDTO> mapToFotosDTO(List<Foto> fotos) {
+        return fotos.stream().map(fotoMapper::toDTO).toList();
     }
 }

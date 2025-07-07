@@ -1,6 +1,7 @@
 package com.example.fincas_grupo3.domain.models.finca;
 
 import com.example.fincas_grupo3.domain.models.direccion.Direccion;
+import com.example.fincas_grupo3.domain.models.foto.Foto;
 import com.example.fincas_grupo3.domain.models.horario.HorarioDisponible;
 import com.example.fincas_grupo3.domain.models.servicio.Servicio;
 import com.example.fincas_grupo3.domain.models.tiporeserva.TipoReserva;
@@ -22,11 +23,13 @@ public class Finca {
     private Set<Servicio> servicios;
     private List<HorarioDisponible> horarioDisponibleList;
     private Set<TipoReserva> tipoReservas;
+    private List<Foto> fotos;
 
     public Finca() {
         this.servicios = new HashSet<>();
         this.horarioDisponibleList = new ArrayList<>();
         this.tipoReservas = new HashSet<>();
+        this.fotos = new ArrayList<>();
     }
 
     public Finca(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, Direccion direccion, Usuario usuario, Set<Servicio> servicios) {
@@ -38,6 +41,25 @@ public class Finca {
         this.direccion = direccion;
         this.usuario = usuario;
         this.servicios = servicios;
+    }
+
+    public void agregarHorario(HorarioDisponible horarioDisponible) {
+        validarHorarios(horarioDisponible);
+        this.horarioDisponibleList.add(horarioDisponible);
+    }
+
+    private void validarHorarios(HorarioDisponible horarioDisponible) {
+        validarHorarioExistente(horarioDisponible);
+    }
+
+    private void validarHorarioExistente(HorarioDisponible horarioDisponible) {
+        for (HorarioDisponible horarioActual : this.horarioDisponibleList) {
+            if (horarioActual.getDiaSemana() == horarioDisponible.getDiaSemana()) {
+                if (horarioActual.getHoraInicio() == horarioDisponible.getHoraInicio() && horarioActual.getHoraFin() == horarioDisponible.getHoraFin()) {
+                    throw new IllegalArgumentException("El horario ya está registrado en la " + this.nombre);
+                }
+            }
+        }
     }
 
     // Getters y Setters
@@ -72,5 +94,13 @@ public class Finca {
 
     public void setTipoReservas(Set<TipoReserva> tipoReservas) {
         this.tipoReservas = tipoReservas;
+    }
+
+    public List<Foto> getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(List<Foto> fotos) {
+        this.fotos = fotos;
     }
 }

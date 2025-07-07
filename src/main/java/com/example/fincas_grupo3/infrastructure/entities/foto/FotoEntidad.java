@@ -1,5 +1,7 @@
 package com.example.fincas_grupo3.infrastructure.entities.foto;
 
+import com.example.fincas_grupo3.domain.models.finca.Finca;
+import com.example.fincas_grupo3.infrastructure.entities.finca.FincaEntidad;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,8 +12,12 @@ public class FotoEntidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "url", nullable = false)
+    @Column(name = "url_imagen", nullable = false)
     private String url;
+
+    @ManyToOne
+    @JoinColumn(name = "finca_id")
+    private FincaEntidad finca;
 
     public FotoEntidad() {
     }
@@ -35,5 +41,13 @@ public class FotoEntidad {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public FincaEntidad getFinca() {
+        return finca;
+    }
+
+    public void setFinca(FincaEntidad finca) {
+        this.finca = finca;
     }
 }

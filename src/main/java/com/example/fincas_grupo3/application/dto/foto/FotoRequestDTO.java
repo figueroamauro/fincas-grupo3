@@ -3,6 +3,7 @@ package com.example.fincas_grupo3.application.dto.foto;
 public class FotoRequestDTO {
     private Long id;
     private String url;
+    private Long fincaId;
 
     public FotoRequestDTO(Long id, String url) {
         this.id = id;
@@ -23,5 +24,13 @@ public class FotoRequestDTO {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Long getFincaId() {
+        return fincaId;
+    }
+
+    public void setFincaId(Long fincaId) {
+        this.fincaId = fincaId;
     }
 }

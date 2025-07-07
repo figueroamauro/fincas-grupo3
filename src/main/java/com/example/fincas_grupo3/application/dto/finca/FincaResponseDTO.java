@@ -1,9 +1,11 @@
 package com.example.fincas_grupo3.application.dto.finca;
 
 import com.example.fincas_grupo3.application.dto.direccion.DireccionResponseDTO;
+import com.example.fincas_grupo3.application.dto.foto.FotoResponseDTO;
 import com.example.fincas_grupo3.application.dto.horario.HorarioDisponibleResponseDTO;
 import com.example.fincas_grupo3.application.dto.servicio.ServicioResponseDTO;
 import com.example.fincas_grupo3.application.dto.usuario.UsuarioResponseDTO;
+import com.example.fincas_grupo3.domain.models.foto.Foto;
 import com.example.fincas_grupo3.domain.models.horario.HorarioDisponible;
 import com.example.fincas_grupo3.domain.models.tiporeserva.TipoReserva;
 
@@ -22,12 +24,14 @@ public class FincaResponseDTO {
     private List<ServicioResponseDTO> servicios;
     private List<HorarioDisponibleResponseDTO> horarioDisponibleList;
     private List<TipoReserva> tipoReservas;
+    private List<FotoResponseDTO> fotos;
 
 
     public FincaResponseDTO() {
         this.servicios = new ArrayList<>();
         this.horarioDisponibleList = new ArrayList<>();
         this.tipoReservas = new ArrayList<>();
+        this.fotos = new ArrayList<>();
     }
 
     public FincaResponseDTO(Long id, String nombre, String descripcion, Double tarifaHora, Double tarifaDia, DireccionResponseDTO direccion, UsuarioResponseDTO usuario, List<ServicioResponseDTO> servicios) {
@@ -76,5 +80,13 @@ public class FincaResponseDTO {
 
     public void setTipoReservas(List<TipoReserva> tipoReservas) {
         this.tipoReservas = tipoReservas;
+    }
+
+    public List<FotoResponseDTO> getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(List<FotoResponseDTO> fotos) {
+        this.fotos = fotos;
     }
 }

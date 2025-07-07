@@ -9,14 +9,14 @@ public class HorarioDisponibleResponseDTO {
     private DiaSemana diaSemana;
     private LocalTime horaInicio;
     private LocalTime horaFin;
-    private String finca;
 
-    public HorarioDisponibleResponseDTO(Long id, DiaSemana diaSemana, LocalTime horaInicio, LocalTime horaFin, String finca) {
+
+    public HorarioDisponibleResponseDTO(Long id, DiaSemana diaSemana, LocalTime horaInicio, LocalTime horaFin) {
         this.id = id;
         this.diaSemana = diaSemana;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
-        this.finca = finca;
+
     }
 
     public Long getId() {
@@ -51,11 +51,4 @@ public class HorarioDisponibleResponseDTO {
         this.horaFin = horaFin;
     }
 
-    public String getFinca() {
-        return finca;
-    }
-
-    public void setFinca(String finca) {
-        this.finca = finca;
-    }
 }

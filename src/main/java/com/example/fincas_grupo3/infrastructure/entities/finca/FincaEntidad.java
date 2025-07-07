@@ -2,6 +2,7 @@ package com.example.fincas_grupo3.infrastructure.entities.finca;
 
 import com.example.fincas_grupo3.domain.models.tiporeserva.TipoReserva;
 import com.example.fincas_grupo3.infrastructure.entities.direccion.DireccionEntidad;
+import com.example.fincas_grupo3.infrastructure.entities.foto.FotoEntidad;
 import com.example.fincas_grupo3.infrastructure.entities.horario.HorarioDisponibleEntidad;
 import com.example.fincas_grupo3.infrastructure.entities.servicio.ServicioEntidad;
 import com.example.fincas_grupo3.infrastructure.entities.tiporeserva.TipoReservaEntidad;
@@ -49,7 +50,7 @@ public class FincaEntidad {
     )
     private Set<ServicioEntidad> servicios = new HashSet<>();
 
-    @OneToMany(mappedBy = "finca")
+    @OneToMany(mappedBy = "finca",fetch = FetchType.EAGER)
     private List<HorarioDisponibleEntidad> horarioDisponibleEntidadList;
 
     @ManyToMany
@@ -57,6 +58,9 @@ public class FincaEntidad {
             joinColumns = @JoinColumn(name = "finca_id"),
             inverseJoinColumns = @JoinColumn(name = "tipos_reserva_id"))
     private List<TipoReservaEntidad> tipoReservas;
+
+    @OneToMany(mappedBy = "finca", fetch = FetchType.EAGER)
+    private List<FotoEntidad> fotos;
 
 
     public FincaEntidad() {
@@ -108,5 +112,13 @@ public class FincaEntidad {
 
     public void setTipoReservas(List<TipoReservaEntidad> tipoReservas) {
         this.tipoReservas = tipoReservas;
+    }
+
+    public List<FotoEntidad> getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(List<FotoEntidad> fotos) {
+        this.fotos = fotos;
     }
 }
