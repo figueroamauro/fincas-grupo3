@@ -19,7 +19,6 @@ public abstract class HorarioDisponibleMapper {
     @Mapping(source = "fincaId", target = "finca", qualifiedByName = "mapToFinca")
     public abstract HorarioDisponible toModel(HorarioDisponibleRequestDTO dto);
 
-    @Mapping(source = "finca.nombre", target = "finca")
     public abstract HorarioDisponibleResponseDTO toDTO(HorarioDisponible horarioDisponible);
 
     @Named("mapToFinca")

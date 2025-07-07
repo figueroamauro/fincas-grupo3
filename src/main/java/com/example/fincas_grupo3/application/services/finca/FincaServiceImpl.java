@@ -47,7 +47,6 @@ public class FincaServiceImpl implements FincaService {
     public FincaResponseDTO guardar(FincaRequestDTO dto) {
         Finca model = fincaMapper.toModel(dto);
 
-
         Direccion direccionCompleta = direccionUseCases.obtenerDireccionPorId(dto.getDireccionId());
         if (direccionCompleta == null) {
             throw new DireccionNoEncontradaException("La dirección con id " + dto.getDireccionId() + " no fue encontrada.");

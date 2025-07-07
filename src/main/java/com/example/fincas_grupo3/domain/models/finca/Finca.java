@@ -40,6 +40,25 @@ public class Finca {
         this.servicios = servicios;
     }
 
+    public void agregarHorario(HorarioDisponible horarioDisponible) {
+        validarHorarios(horarioDisponible);
+        this.horarioDisponibleList.add(horarioDisponible);
+    }
+
+    private void validarHorarios(HorarioDisponible horarioDisponible) {
+        validarHorarioExistente(horarioDisponible);
+    }
+
+    private void validarHorarioExistente(HorarioDisponible horarioDisponible) {
+        for (HorarioDisponible horarioActual : this.horarioDisponibleList) {
+            if (horarioActual.getDiaSemana() == horarioDisponible.getDiaSemana()) {
+                if (horarioActual.getHoraInicio() == horarioDisponible.getHoraInicio() && horarioActual.getHoraFin() == horarioDisponible.getHoraFin()) {
+                    throw new IllegalArgumentException("El horario ya está registrado en la " + this.nombre);
+                }
+            }
+        }
+    }
+
     // Getters y Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
