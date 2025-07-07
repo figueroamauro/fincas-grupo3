@@ -8,7 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring", implementationName = "fotoMapperInfra")
 public abstract class FotoMapper {
 
-    @Mapping(source = "finca", target = "finca")
+    @Mapping(source = "finca", target = "finca", ignore = true)
     public abstract Foto toModel(FotoEntidad fotoEntidad);
 
     @Mapping(source = "finca", target = "finca")
