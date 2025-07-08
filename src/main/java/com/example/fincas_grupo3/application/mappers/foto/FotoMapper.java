@@ -19,7 +19,7 @@ public abstract class FotoMapper {
     @Mapping(source = "fincaId", target = "finca", qualifiedByName = "mapToFinca")
     public abstract Foto toModel(FotoRequestDTO dto);
 
-    @Mapping(target = "finca", ignore = true)
+
     public abstract FotoResponseDTO toDTO(Foto foto);
 
     @Named("mapToFinca")
