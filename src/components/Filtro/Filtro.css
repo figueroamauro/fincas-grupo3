@@ -1,0 +1,60 @@
+.filtro-box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 220px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filtro-title {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.filtro-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filtro-item {
+  margin-bottom: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Ocultar el checkbox original */
+.hidden-checkbox {
+  display: none;
+}
+
+/* Estilo visual de la caja */
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #888;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+/* Tick cuando está seleccionado */
+.hidden-checkbox:checked + .custom-checkbox::after {
+  content: "✔";
+  font-size: 12px;
+  color: green;
+  position: absolute;
+  top: -2px;
+  left: 2px;
+}

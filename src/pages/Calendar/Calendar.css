@@ -1,0 +1,97 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body,
+html,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Grid layout general */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+  grid-template-rows: 60px auto auto auto;
+  gap: 8px;
+  height: 100%;
+}
+
+/* Encabezado */
+.header {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sidebar izquierdo */
+.sidebar-left {
+  grid-column: 1;
+  grid-row: 2 / 6;
+  background-color: #f0f0f0;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Sidebar derecho (vacío por ahora) */
+.sidebar-right {
+  grid-column: 5;
+  grid-row: 2 / 6;
+  background-color: #f0f0f0;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Calendario */
+.calendar {
+  grid-column: 2 / 5;
+  grid-row: 2 / 6;
+  background: linear-gradient(135deg, #f9f9f9, #e6e6e6);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto repeat(6, 1fr);
+  gap: 8px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+/* Etiquetas de días (Dom, Lun...) */
+.day-label {
+  font-weight: bold;
+  text-align: center;
+  padding: 8px;
+  background-color: #ddd;
+  border-radius: 6px;
+}
+
+/* Celdas de los días */
+.day-cell {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: right;
+  font-size: 14px;
+  color: #333;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.day-cell:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #c8e6ff, #ffffff);
+}
